@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Die Vorlage mit spezifischen Overlay Specification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{%
+\begin{frame}[fragile,t]
+
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+
+	Use specific overlay order.
+
+		\begin{enumerate}
+			\item <1->  the first
+			\item <3->  the third
+			\item <4-5> always?
+			\item <2->  Another one (2)
+			\item <3-4> Only briefly
+			\item <6->   This is the last one
+		\end{enumerate}
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+}
+
+\newpage

@@ -1,0 +1,838 @@
+\section{TeX Quickstart}
+{%
+\setbeamertemplate{frametitle}[chapter title]
+\begin{frame}[fragile]
+\frametitle<presentation>{TeX Quickstart}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+\note{Mal gucken, wo das hier dann aufschlägt und wie das alles aussieht}
+
+\mode
+<article>
+
+Das hier ist eine kurze Übersicht über alle möglichen TeX-Strukturen in einer B1-Unterlage. Für den Standardaufbau einer B1-TeX-Datei bitte die Templatedatei verwenden, die beim Anlegen neuer Projekte automatisch spendiert wurde. Abweichungen von dieser Struktur werden nicht akzeptiert.
+
+Theoretische Hintergründe, mehr Details, Sprachspezifisches und Formulierungshilfen stehen im Styleguide, \url{https://dav.intern.b1-systems.de/documentation/trainings/internal/de/style-handout\_internal.pdf}.
+
+\mode
+<all>
+
+\end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Allgemeine Konventionen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Allgemeine Konventionen}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\small
+\begin{block}{\centering{Typografische Konventionen}}
+\begin{center}
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Element} & \textbf{Auszeichnung}\\
+Datei- und Verzeichnisname & \verb+\texttt{/etc/passwd}+\\
+Username & \verb+\texttt{tux}+ \\
+Eingabe & \verb+\texttt{www.example.com}+ \\
+URL & \verb+\url{http://www.suse.de}+ \\
+Umgebungsvariablen & \verb+\texttt{PATH}+ \\
+Platzhalter/Variablen & \verb+\texttt{\textit{filename}}+ \\
+Kommandos & \verb+\texttt{rm -rf *}+ \\
+Menüpunkt/Eingabefelder/Buttons & \verb+\textit{OK}+ \\
+Tasten und -kombinationen & \verb+\textit{Alt+F1}+ \\
+Manpage & Manpage (\verb+\texttt{man 1 man}+)\\
+Einheiten & 5\verb+~+Gigabyte\\
+\end{tabularx}
+\end{center}
+\end{block}
+\normalsize
+
+
+\mode
+<article>
+Die absoluten Basics an typografischen Auszeichnungen für unsere Materialien:
+
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textsc{\textbf{Element}} & \textsc{\textbf{Auszeichnung}}\\
+\hline
+\hline
+Datei und Verzeichnisname & \textbackslash texttt\{/etc/passwd\}\\
+Username & \textbackslash texttt\{tux\} \\
+Eingabe & \textbackslash texttt\{www.example.com\} \\
+URL & \textbackslash url\{http://www.b1-systems.de\} \\
+Umgebungsvariablen & \textbackslash texttt\{PATH\} \\
+Platzhalter/Variablen & \textbackslash texttt\{\textbackslash textit\{filename\}\} \\
+Kommandos & \textbackslash texttt\{rm -rf *\} \\
+Menübezeichnungen/Eingabefelder/Buttons & \textbackslash textit\{OK\} \\
+Tasten und -kombinationen & \textbackslash textit\{Alt+F1\} \\
+Manpage & Manpage (\textbackslash texttt\{man 1 man\})\\
+Einheiten & 5$\sim$Gigabyte \\
+\hline
+\end{tabularx}
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tipps und Tricks}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle<presentation>{Tipps und Tricks, I}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{itemize}
+\item Inhalt passt nicht auf die Folie? Notfalls Font verkleinern (small, footnotesize, scriptsize, tiny) und danach wieder auf normale Größe umschalten. Tipp: niemals kleiner als footnotesize auf Folien!
+\note[item]{wen interessiert schon Layout? Los, sagt schon, wen?}
+\item TeX ignoriert einfachen Zeilenumbruch; wer Umbruch will, mache zwei Umbrüche bzw. eine Leerzeile
+\item ein Gedankenstrich entsteht aus zwei \texttt{-}
+\item -{}- liefert die Doppelbindestriche, wie sie manchmal bei Befehlsangaben verwendet werden
+\end{itemize}
+
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+\begin{frame}
+\frametitle<presentation>{Tipps und Tricks, II}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{itemize}
+\item Bestimmte Zeichen haben eine eigene Bedeutung in TeX und müssen per Backslash maskiert werden. Lieblingskandidaten:
+\begin{description}
+  \item[\&] wird in Tabellen als Trenner verwendet
+  \item[\%] Kommentarzeichen
+  \item[\$] umschließt Notation im Mathmodus
+  \item[\#]
+  \item[\_]
+  \item[$\textbackslash$] leitet Befehle ein
+  \item[$\sim$] geschütztes Leerzeichen
+\end{description}
+\item Dass TeX den Mathmodus erwartet \$ \ldots \$ merkt ihr an der Fehlermeldung: "`\texttt{Missing \$ inserted}"' :-)
+\end{itemize}
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Codefragmente/Befehle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Codefragmente/Befehle}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+Code auf Slides:
+\begin{itemize}
+ \item \texttt{block} Umgebung mit eingebettetem \texttt{verbatim}
+\end{itemize}
+
+\begin{block}{}
+\begin{verbatim}
+# blabla -v
+\end{verbatim}
+\end{block}
+
+\begin{block}{Beispiel mit optionalem Titel}
+\begin{verbatim}
+# blabla -v
+\end{verbatim}
+\end{block}
+
+Code im Handout: \texttt{lstlisting}-Umgebung
+
+
+\mode
+<article>
+
+Codefragmente jeder Art, Beispielkonfigs, Befehle etc. werden alle auf den Folien in \texttt{verbatim} gesetzt und in eine \texttt{block} Umgebung eingebettet. Wenn nötig, kann dieser Umgebung auch ein Titel mitgegeben werden:
+
+
+\begin{block}{}
+\begin{verbatim}
+# blabla-v
+\end{verbatim}
+\end{block}
+
+bzw.
+
+\begin{block}{Beispiel mit optionalem Titel}
+\begin{verbatim}
+# blabla -v
+\end{verbatim}
+\end{block}
+
+Im Handout keinen Block setzen, hier \texttt{lstlisting} verwenden -- da werden Zeilenumbrüche automatisch gemacht und die Größe automatisch gewählt:
+\begin{lstlisting}
+code
+\end{lstlisting}
+
+
+
+\mode
+<all>
+
+\end{frame}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Listen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Listen}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+\begin{description}
+ \item[itemize] Aufzählung gleichrangiger Punkte, Textfolien
+\begin{block}{}\footnotesize
+\begin{verbatim}
+ \begin{itemize}
+  \item Listenpunkt
+ \end{itemize}\end{verbatim}\normalsize\end{block}
+ \item[description] Aufzählung von Punkten mit Erklärung
+\begin{block}{}\footnotesize
+\begin{verbatim}
+ \begin{description}
+  \item[Listenpunkt] Erklärung
+ \end{description}\end{verbatim}\normalsize\end{block}
+ \item[enumerate] Zeitliche/logische Folge, Handlungsanweisung
+\begin{block}{}\footnotesize
+\begin{verbatim}
+ \begin{enumerate}
+  \item Listenpunkt
+ \end{enumerate}\end{verbatim}\normalsize\end{block}
+\end{description}
+
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{itemize}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+
+\begin{itemize}
+ \item ich bin ein item erster Ordnung
+	\begin{itemize}
+	\item und ich zweiter!
+ 	\item ich auch!!!
+	\end{itemize}
+ \item ich auch erste Ordnung
+\end{itemize}
+
+
+\mode
+<article>
+
+\begin{itemize}
+ \item itemize-Listen können geschachtelt werden, man sollte aber nicht mehr als zwei, max. drei Ebenen haben, damit der Seitenspiegel noch vernünftig genutzt ist!
+\item itemize-Listen können mit anderen Listen kombiniert werden.
+\end{itemize}
+
+Der typische Code einer \verb+itemize+ Umgebung:
+
+\begin{lstlisting}
+\begin{itemize}
+ \item ich bin ein item erster Ordnung
+	\begin{itemize}
+	\item und ich zweiter!
+ 	\item ich auch!!!
+	\end{itemize}
+ \item ich auch erste Ordnung
+\end{itemize}
+\end{lstlisting}
+
+
+
+\mode
+<all>
+
+\end{frame}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{description}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{description}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{description}
+ \item[Begriff] hier kommt die Erklärung
+\item[Schachteln] aber klar!
+ \begin{description}
+	\item[geschachtelt] ... so geht's auch!
+ \end{description}
+\item[Kombinieren] und kombiniert wird auch:
+ \begin{itemize}
+  \item Item \#1
+  \item Item \#2
+ \end{itemize}
+ \item[der Tildentrick]~
+ \begin{itemize}
+  \item Item \#1
+  \item Item \#2
+ \end{itemize}
+\end{description}
+
+
+\mode
+<article>
+
+\begin{itemize}
+ \item \verb+description+ immer dann verwenden, wenn ein Begriff näher erklärt werden soll
+ \item \textit{NIEMALS} itemize verwenden und dann mit Fake-Auszeichnungen wie Kombinationen aus Fett- oder Kursivdruck oder Bindestrichen eine \verb+description+ vortäuschen.
+ \item \verb+description+ ist schachtelbar. Mehr als zwei Ebenen sind aber unübersichtlich!
+ \item Kombination aus \verb+description+ und \verb+itemize+ ist möglich; will man sofort nach dem Label einen Zeilenumbruch, dann verwendet man eine \~{} direkt nach dem Label. Danach in der nächsten Zeile die neue Liste anfangen.
+\end{itemize}
+
+Der TeX-Code zum Beispiel oben:
+\begin{lstlisting}
+ \begin{description}
+ \item[Begriff] hier kommt die Erklärung
+\item[Schachteln] aber klar!
+ \begin{description}
+	\item[geschachtelt] ... so geht's auch!
+ \end{description}
+\item[Kombinieren] und kombiniert wird auch:
+ \begin{itemize}
+  \item Item \#1
+  \item Item \#2
+ \end{itemize}
+ \item[der Tildentrick]~
+ \begin{itemize}
+  \item Item \#1
+  \item Item \#2
+ \end{itemize}
+\end{description}
+\end{lstlisting}
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{enumerate}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{enumerate}
+ \item Item \#1
+ \item Item \#2
+\begin{enumerate}
+ \item Unterpunkt \#1
+ \item Unterpunkt \#2
+\end{enumerate}
+ \item Item \#3
+ \begin{itemize}
+  \item geschachtelte itemize
+ \end{itemize}
+ \item Item \#4
+ \begin{description}
+  \item[geschachtelte description] ...
+ \end{description}
+\end{enumerate}
+
+\mode
+<article>
+\begin{itemize}
+ \item \verb+enumerate+ für Handlungsaufforderungen und alles andere, wo ein Punkt aus dem anderen folgt und nicht weggelassen werden kann. Das betrifft meist zeitliche oder logische Reihenfolge (\textit{tu dies, dann das ...})
+\item Schachtelungen sind möglich; aber nicht übertreiben, damit die Seite optimal genutzt wird
+\item Bei einer über mehrere Slides verteilten Liste kann man für eine fortlaufende Zählung sorgen:
+\begin{lstlisting}
+\begin{enumerate}
+        \setcounter{enumi}{6}
+\end{lstlisting}
+Hier würde die Zählung mit einer "`7"' beginnen, auf dem vorherigen Slide gibt es also schon 6 Punkte.
+\end{itemize}
+
+Der Code zum Beispiel:
+
+\begin{lstlisting}
+\begin{enumerate}
+ \item Item \#1
+ \item Item \#2
+\begin{enumerate}
+ \item Unterpunkt \#1
+ \item Unterpunkt \#2
+\end{enumerate}
+ \item Item \#3
+ \begin{itemize}
+  \item geschachtelte itemize
+ \end{itemize}
+ \item Item \#4
+ \begin{description}
+  \item[geschachtelte description] ...
+ \end{description}
+\end{enumerate}
+\end{lstlisting}
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tabellen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Tabellen}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+Verbindliches Tabellenlayout auf Slides:
+\begin{block}{\centering{Titel der Tabelle}}
+\begin{tabularx}{\textwidth}{XX}
+\textbf{Spaltentitel 1} & \textbf{Spaltentitel 2}\\
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+\end{tabularx}
+\end{block}
+
+Tabellenlayout im Handout ohne \verb+block+ und mit mehr Linien zur Unterteilung
+
+\mode
+<article>
+\begin{itemize}
+ \item \texttt{tabularx} verwenden! Das erlaubt flexible Spaltenaufteilung, ohne dass man das manuell hinfrickeln muss. Gesamttabellenbreite ist fix, aber die Spaltenbreite kann variabel gewählt werden:
+\begin{description}
+ \item[l] linksbündig und mit fester Breite (\texttt{r} und \texttt{c} sind auch möglich, sollten aber vermieden werden, damit wir einheitliche Tabellen haben); "`feste Breite"' heißt, dass die Breite der Spalte dem Text angeglichen wird, es erfolgt \textit{kein} automatischer Zeilenumbruch!
+ \item[X] linksbündig mit variabler Breite, d.h. nachdem die maximal für die Tabelle mögliche Breite ausgenutzt ist, erfolgt in dieser Spalte automatisch ein Umbruch.
+\end{description}
+\item Bei der Angabe der Breite: \texttt{textwidth} ist immer die gesamte Textbreite, \texttt{linewidth} wird der Breite angepasst, wenn man sich z.B. in einer \texttt{itemize}-Umgebung befindet
+\item Unterschiedliches Layout für Tabellen auf Folien (Beispiel s.o.) und im Handout (siehe unten)
+\end{itemize}
+
+\pagebreak
+
+Tabellencode für Folien (Beispiel von oben):
+
+\begin{lstlisting}
+\begin{block}{\centering{Titel der Tabelle}}
+ \begin{tabularx}{\textwidth}{XX}
+  \textbf{Spaltentitel 1} & \textbf{Spaltentitel 2}\\
+    Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+    Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+ \end{tabularx}
+\end{block}
+\end{lstlisting}
+
+Tabellenlayout im Handout:
+
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textsc{\textbf{Spaltentitel 1}} & \textsc{\textbf{Spaltentitel 2}}\\
+\hline
+\hline
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+\hline
+\end{tabularx}
+
+Dazugehöriger Code:
+
+\begin{lstlisting}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textsc{\textbf{Spaltentitel 1}} & \textsc{\textbf{Spaltentitel 2}}\\
+\hline
+\hline
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+\hline
+\end{tabularx}
+\end{lstlisting}
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Tabellen mit Seitenumbruch}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+
+\begin{block}{Tabelle mit Seitenumbruch (nur Handout!)}
+\footnotesize
+\begin{verbatim}
+\begin{longtable}{|l|p{9.3cm}|}
+\hline
+\textsc{\textbf{Titel 1}} & \textsc{\textbf{Titel 2}}\\
+\hline
+\hline
+\endhead
+\hline\multicolumn{2}{|r|}{\textit{Fortsetzung ...}}\\
+\hline
+\endfoot
+\endlastfoot
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+\hline
+\end{longtable}
+\end{verbatim}
+\normalsize
+\end{block}
+
+
+
+\mode
+<article>
+
+\begin{itemize}
+ \item Für Tabellen mit Seitenumbruch \texttt{longtable} verwenden! Hier muss man etwas rumprobieren, um die passenden Spalten-Breiten zu finden. Folgende Angaben für die Spalten sind möglich:
+\begin{description}
+ \item[l] linksbündig und mit fester Breite (\texttt{r} und \texttt{c} sind auch möglich, sollten aber vermieden werden, damit wir einheitliche Tabellen haben); "`feste Breite"' heißt, dass die Breite der Spalte dem Text angeglichen wird, es erfolgt \textit{kein} automatischer Zeilenumbruch!
+ \item[p\{X.Ycm\}] linksbündig mit angegebener Breite, d.h. Text wird in der entsprechenden Breite umbrochen
+\end{description}
+\item durch das \texttt{endhead} wird dafür gesorgt, dass der entsprechende "`Header"' auf jeder Seite zu finden ist
+\item Definition eines Footers ist sinnvoll, der auf weitere Seiten verweist und dafür sorgt, dass die Tabelle auf jeder Seite unten von einer Linie begrenzt ist; das \texttt{multicolumn} muss natürlich der Zahl der vorhandenen Spalten angeglichen werden (im Beispiel 2)
+\item Tabellen mit Seitenumbruch natürlich nur im Handout
+\end{itemize}
+
+\pagebreak
+
+Tabellenlayout im Handout:
+
+\begin{longtable}{|l|p{9.3cm}|}
+\hline
+\textsc{\textbf{Spaltentitel 1}} & \textsc{\textbf{Spaltentitel 2}}\\
+\hline
+\hline
+\endhead
+\hline\multicolumn{2}{|r|}{\textit{Fortsetzung auf der nächsten Seite}}\\
+\hline
+\endfoot
+\endlastfoot
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+Zeile 3, Spalte 1 & Zeile 3, Spalte 2\\
+Zeile 4, Spalte 1 & Zeile 4, Spalte 2\\
+Zeile 5, Spalte 1 & Zeile 5, Spalte 2\\
+Zeile 6, Spalte 1 & Zeile 6, Spalte 2\\
+Zeile 7, Spalte 1 & Zeile 7, Spalte 2\\
+Zeile 8, Spalte 1 & Zeile 8, Spalte 2\\
+Zeile 9, Spalte 1 & Zeile 9, Spalte 2\\
+Zeile 10, Spalte 1 & Zeile 10, Spalte 2\\
+Zeile 11, Spalte 1 & Zeile 11, Spalte 2\\
+Zeile 12, Spalte 1 & Zeile 12, Spalte 2\\
+Zeile 13, Spalte 1 & Zeile 13, Spalte 2\\
+Zeile 14, Spalte 1 & Zeile 14, Spalte 2\\
+Zeile 15, Spalte 1 & Zeile 15, Spalte 2\\
+Zeile 16, Spalte 1 & Zeile 16, Spalte 2\\
+Zeile 17, Spalte 1 & Zeile 17, Spalte 2\\
+Zeile 18, Spalte 1 & Zeile 18, Spalte 2\\
+Zeile 19, Spalte 1 & Zeile 19, Spalte 2\\
+Zeile 20, Spalte 1 & Zeile 20, Spalte 2\\
+Zeile 21, Spalte 1 & Zeile 21, Spalte 2\\
+Zeile 22, Spalte 1 & Zeile 22, Spalte 2\\
+Zeile 23, Spalte 1 & Zeile 23, Spalte 2\\
+Zeile 24, Spalte 1 & Zeile 24, Spalte 2\\
+Zeile 25, Spalte 1 & Zeile 25, Spalte 2\\
+Zeile 26, Spalte 1 & Zeile 26, Spalte 2\\
+Zeile 27, Spalte 1 & Zeile 27, Spalte 2\\
+Zeile 28, Spalte 1 & Zeile 28, Spalte 2\\
+Zeile 29, Spalte 1 & Zeile 29, Spalte 2\\
+Zeile 30, Spalte 1 & Zeile 30, Spalte 2\\
+Zeile 31, Spalte 1 & Zeile 31, Spalte 2\\
+Zeile 32, Spalte 1 & Zeile 32, Spalte 2\\
+Zeile 33, Spalte 1 & Zeile 33, Spalte 2\\
+Zeile 34, Spalte 1 & Zeile 34, Spalte 2\\
+Zeile 35, Spalte 1 & Zeile 35, Spalte 2\\
+Zeile 36, Spalte 1 & Zeile 36, Spalte 2\\
+Zeile 37, Spalte 1 & Zeile 37, Spalte 2\\
+Zeile 38, Spalte 1 & Zeile 38, Spalte 2\\
+Zeile 39, Spalte 1 & Zeile 39, Spalte 2\\
+Zeile 40, Spalte 1 & Zeile 40, Spalte 2\\
+Zeile 41, Spalte 1 & Zeile 41, Spalte 2\\
+Zeile 42, Spalte 1 & Zeile 42, Spalte 2\\
+Zeile 43, Spalte 1 & Zeile 43, Spalte 2\\
+Zeile 44, Spalte 1 & Zeile 44, Spalte 2\\
+Zeile 45, Spalte 1 & Zeile 45, Spalte 2\\
+Zeile 46, Spalte 1 & Zeile 46, Spalte 2\\
+Zeile 47, Spalte 1 & Zeile 47, Spalte 2\\
+Zeile 48, Spalte 1 & Zeile 48, Spalte 2\\
+Zeile 49, Spalte 1 & Zeile 49, Spalte 2\\
+Zeile 50, Spalte 1 & Zeile 50, Spalte 2\\
+Zeile 51, Spalte 1 & Zeile 51, Spalte 2\\
+Zeile 52, Spalte 1 & Zeile 52, Spalte 2\\
+\hline
+\end{longtable}
+
+Dazugehöriger Code:
+
+\begin{lstlisting}
+\begin{longtable}{|l|p{9.3cm}|}
+\hline
+\textsc{\textbf{Spaltentitel 1}} & \textsc{\textbf{Spaltentitel 2}}\\
+\hline
+\hline
+\endhead
+\hline\multicolumn{2}{|r|}{\textit{Fortsetzung auf der nächsten Seite}}\\
+\hline
+\endfoot
+\endlastfoot
+Zeile 1, Spalte 1 & Zeile 1, Spalte 2\\
+Zeile 2, Spalte 1 & Zeile 2, Spalte 2\\
+...
+\hline
+\end{longtable}
+\end{lstlisting}
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Warnhinweise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Warnhinweise und Co.}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+\begin{description}
+ \item[Achtung/Warning] Die allerhöchste Warnstufe, die wir haben. Hier sind konkret Daten oder Hardware bedroht, wenn man den Hinweis nicht befolgen würde.
+ \item[Wichtig/Important] Zweithöchste Warnstufe. Wichtig, aber Nichtbeachten hat keine (negativen) Folgen.
+ \item[Tipp/Tip] Interessante Zusatzinformation.
+ \item[Hinweis/Note] Ähnlich wie Tipp. Typischer Einsatz, wenn man auf Versionsunterschiede o.ä. hinweisen möchte.
+\end{description}
+
+Format:
+\begin{block}{Warning: Cats Are in Danger When Microwaved}
+ blablabla
+\end{block}
+
+\mode
+<article>
+
+Wir unterscheiden in den Unterlagen zwischen vier Typen von Warnhinweisen:
+
+\begin{description}
+ \item[Achtung/Warning] Allerhöchste Warnstufe. Konkrete Bedrohung wie Datenverlust oder Beschädigung der Hardware. Alles andere ist keine Warnung, sondern sollte als \textit{Wichtig} gehandelt werden.
+ \item[Wichtig/Important] Zweithöchste Warnstufe. Wichtige Information für den Benutzer, die für sein Setup wichtig ist, aber deren Nichtbeachten keinerlei negative Folgen für ihn hat.
+ \item[Tipp/Tip] Interessante Zusatzinformation für den Leser. Sie ist nicht notwendig, macht ihn aber schlauer.
+ \item[Hinweis/Note] Siehe \textit{Tipp}. Einsatzgebiet sind zum Beispiel Änderungen in einer Software von Version zu Version oder geänderte Tastaturshortcuts -- einfach Fakten, die der Leser eigentlich schon hat, die sich aber geändert haben und deshalb rausgestellt werden müssen.
+\end{description}
+
+Bei \textit{Tipp} und \textit{Hinweis} gibt es keine Gefahr, also beschränkt euch auf eine Kurzdarstellung der Info, die ihr vermitteln wollt. Überschriften müssen diese Boxen aber trotzdem haben.
+
+Beispielcode (presentation):
+\begin{lstlisting}
+\begin{block}{Warning: Cats Are in Danger When Microwaved}
+blablabla
+\end{block}
+\end{lstlisting}
+
+Für die Boxen im Handout haben wir selbstdefinierte Makros namens \texttt{b1warning}, \texttt{b1important}, \texttt{b1tip} und \texttt{b1note}.
+
+Beispielcode für einen Warnhinweis:
+\begin{lstlisting}
+\begin{b1warning}{Cats Are in Danger When Microwaved}
+blabla
+\end{b1warning}
+\end{lstlisting}
+ 
+Alle diese Makros funktionieren nur innerhalb einer geklammerten \texttt{article} Umgebung. Wenn die nicht verwendet werden kann, weil zum Beispiel Listings im gleichen Abschnitt verwendet werden, initialisiert sie einfach neu. Die entsprechende Fehlermeldung bemängelt in solchen Fällen:
+
+\begin{lstlisting}
+Environment bclogo undefined 
+\end{lstlisting}
+
+
+\mode<article>{
+
+\begin{b1warning}{Cats Are in Danger When Microwaved}
+ blabla
+\end{b1warning}
+
+Die Signalworte expandiert das Makro selbst und die werden auch sprachabhängig richtig gesetzt. 
+
+\begin{b1important}{Cats Do Not Like Being Microwaved}
+blablabla
+\end{b1important}
+
+Denkt dran, die Hinweise knapp, aber vollständig zu halten und niemals Listings (\texttt{verbatim}, \texttt{lstlisting}) oder Grafiken innerhalb der Umgebung zu verwenden.
+
+\begin{b1tip}{Cats Like Trees}
+blablablabla
+\end{b1tip}
+
+In den Slides verwendet weiterhin das \texttt{block} Environment wie gehabt. Die Formatierung ist nicht zu schlagen ;)
+
+\begin{b1note}{More Information For Cat Lovers}
+ blabla
+\end{b1note}
+
+% \begin{bclogo}[logo=\bctrefle,noborder=true,epBarre=1]{}
+% Alle diese Makros funktionieren nur innerhalb einer geklammerten \texttt{article} Umgebung. Wenn die nicht verwendet werden kann, weil zum Beispiel Listings im gleichen Abschnitt verwendet werden, initialisiert sie einfach neu. Die entsprechende Fehlermeldung bemängelt in solchen Fällen:
+% \end{bclogo}
+% 
+% \begin{bclogo}[logo=\bctrefle,noborder=true,barre=none]{}
+% Alle diese Makros funktionieren nur innerhalb einer geklammerten \texttt{article} Umgebung. Wenn die nicht verwendet werden kann, weil zum Beispiel Listings im gleichen Abschnitt verwendet werden, initialisiert sie einfach neu. Die entsprechende Fehlermeldung bemängelt in solchen Fällen:
+% \end{bclogo}
+}
+
+
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bilder und Grafiken}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Bilder und Grafiken}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{figure}[htb!]
+        \begin{center}
+        \includegraphics[height=0.2\textheight]{common/artwork/b1-tux}
+        \end{center}
+        \caption{B1 Tux}
+        \label{fig:tux}
+\end{figure}
+\begin{block}{}\small
+\begin{verbatim}
+\begin{figure}[htb!]
+ \begin{center}
+   \includegraphics[height=0.2\textheight]{common/bild}
+ \end{center}
+ \caption{B1 Tux}
+ \label{fig:tux}
+\end{figure}
+\end{verbatim}\normalsize\end{block}
+
+\mode
+<article>
+
+Grafiken werden im SVN entweder als SVG abgelegt, falls sie selbst erstellt wurden, oder bei Screenshots als PNG.
+
+Das Einbinden erfolgt wie im Beispiel oben mit der \texttt{figure}-Umgebung. Bei Angabe des Bild-Namens kann die Endung weggelassen werden.
+
+Die Skalierung der Grafik müsst ihr einfach testen -- die Angabe der Größe kann über \texttt{height} oder \texttt{width} erfolgen und wird am einfachsten als Faktor von \texttt{textheight} oder \texttt{textwidth} angegeben. Natürlich könnt ihr auch direkt eine feste Größe angeben. Achtet bitte darauf, dass die Bild-Unterschrift zu sehen ist und das Bild nicht in die Folienbeschriftung "`hineinragt"'.
+
+Bitte gebt mit \texttt{caption} eine vernünftige Bild-Unterschrift an.
+
+Möchtet ihr später auf die Abbildung verweisen können, dann fügt \emph{unter} dem \texttt{caption}-Eintrag ein \texttt{label} ein. Benennt das Label sinnvollerweise mit \texttt{fig:mein-label}.
+
+\mode
+<all>
+
+\end{frame}
+\newpage

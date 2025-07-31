@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Einleitung und Beschreibung des Projekts, Überblick über das Kundensystem
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Einleitung}
+
+Die vorliegende Dokumentation beschreibt den Ablauf des IHK-Abschlussprojekts, das von dem Auszubildenden Moritz Stefan Menzel im Rahmen seiner Ausbildung zum Fachinformatiker in der Fachrichtung Anwendungsentwicklung durchgeführt wird.
+
+\subsection{Unternehmensvorstellung}
+
+Die \beins{} ist ein mittelständisches Trainings- und Consultingunternehmen, das sich auf \gls{open source}-Lösungen spezialisiert. Auf internationaler Ebene unterstützt die \beins{} ihre Kunden bei der Planung, Implementierung und Betreuung von IT-Infrastrukturen. Darüber hinaus bietet das Unternehmen eine Vielzahl von Schulungen in verschiedenen Informationstechnologien an, darunter Linux-Grundlagen, Kubernetes, Keycloak und viele weitere Themen.
+
+Das umfangreiche Technologieportfolio der \beins{} umfasst unter anderem die Bereiche Virtualisierung, Container, Hochverfügbarkeit, Monitoring und Konfigurationsmanagement. Zudem verfügt das Unternehmen über eine Entwicklungsabteilung, die sowohl an \gls{open source}-Projekten mitwirkt als auch interne und externe Projekte realisiert.
+Stand November 2025 beschäftigt die \beins{} etwa 200 Mitarbeiter in 5 Ländern.
+
+\subsection{Projektbeschreibung}
+
+Die \beins{} stellt ihren Mitarbeitern Fahrzeuge zur Verfügung, da sie regelmäßig zu Kundenbesuchen unterwegs sind. Darüber hinaus bietet das Unternehmen auch ein internes Auto-Leasing-Programm an, um den individuellen Bedürfnissen ihrer Mitarbeiter gerecht zu werden.
+
+Die Fahrzeugdaten werden bislang handschriftlich auf Papier festgehalten und in Ordnern archiviert. Im Rahmen der Digitalisierung des Unternehmens und der Implementierung effizienterer Prozesse wird beschlossen, eine Fahrzeugverwaltungssoftware zu entwickeln, die den Arbeitsaufwand minimiert und die bisherige Methode ablöst.
+
+\subsection{Projektziel}
+
+Die Aufgabe des Auszubildenden besteht darin, ein Backend für die Fahrzeugverwaltungssoftware zu entwickeln.
+
+Die Implementierung einer \gls{rest api}-Anwendung ermöglicht die umfassende Verwaltung von Fahrzeugdaten in einer Datenbank. Diese Fahrzeugdaten umfassen spezifische Informationen wie Marke, Kennzeichen sowie Vor- und Nachname des Mitarbeiters, dem das Fahrzeug zugeordnet ist.
+
+Die \gls{api} ist für die grundlegenden Operationen zuständig: Erstellen, Abrufen, Aktualisieren und Löschen dieser Daten. Das zugrunde liegende Datenmodell definiert die Struktur der Fahrzeugdaten und stellt sicher, dass alle relevanten Informationen konsistent und korrekt gespeichert werden.
+
+In Kombination mit der \gls{api}-Anwendung können Benutzer über verschiedene \gls{api}-Endpunkte auf die Fahrzeugdaten zugreifen. Diese Endpunkte sind spezifische URLs, die es ermöglichen, die oben genannten Operationen durchzuführen, und bieten eine klare Schnittstelle zur Interaktion mit den Fahrzeugdaten.
+
+Zusammengefasst ermöglicht die \gls{rest api}-Anwendung eine effiziente Verwaltung von Fahrzeugdaten, wobei das Datenmodell die Struktur dieser Daten festlegt und die \gls{api}-Endpunkte den Zugriff und die Manipulation der Daten erleichtern.
+
+\subsection{Projektumfeld}
+
+Die Entwicklung der Fahrzeugverwaltungssoftware ist ein internes Projekt, das von der Geschäftsleitung der \beins{} initiiert wird. Herr Bernd Ritter, Linux-Entwickler bei der \beins{}, übernimmt die technische Verantwortung. Im Rahmen der agilen Entwicklungsweise gibt er wertvolles Feedback und führt Codereviews durch, um technische Fragen zu klären.
+
+Die Umsetzung des Projekts erfolgt in den Büros der \beins{} in Rockolding auf einem firmeninternen Laptop mit einem \gls{linux} Betriebssystem. Ich erstelle den Code in \gls{vscode}, das als Entwicklungsumgebung dient. Für die Versionsverwaltung nutze ich die firmeninterne Instanz der Dev-Ops-Plattform \gls{gitlab}.
+
+\subsection{Projektabgrenzung}
+
+Folgende Einschränkungen werden im Vorfeld getroffen:
+\begin{itemize}
+    \item Das Projekt umfasst ausschließlich die Entwicklung des Backends für die Fahrzeugverwaltungssoftware.
+    \item Die Entwicklung erfolgt in der Programmiersprache \gls{python}, wobei das Framework \gls{fastapi} und die Bibliothek \gls{pydantic} verwendet werden.
+    \item Insgesamt entsteht ein Kleinstes realisierbares Produkt als Endergebnis.
+\end{itemize}

@@ -1,0 +1,338 @@
+\documentclass[a4paper,
+	11pt,
+	%draft,  %% deactivate graphics, mark long lines and use rulers in headings and footer
+	%overfullrule=true,  % mark long lines
+	]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[draft=false]{scrlayer-scrpage} %the new srcpage2; part of Koma-Script; used for header and footer
+		% draft=false  disables the rulers in headings and footer when draft is enabled in documentclass
+\usepackage{courier}
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{graphicx}
+\usepackage{fancyvrb,newverbs}
+\usepackage[table]{xcolor} % load the table option to use \cellcolor and \rowcolors
+\usepackage[colorlinks=true,
+        linkcolor=black,
+        citecolor=black,
+        filecolor=black,
+        urlcolor=blue,
+        bookmarks=true,
+        bookmarksopen=true,
+        bookmarksopenlevel=3,
+        plainpages=false,
+        pdfpagelabels=true]{hyperref}
+\usepackage{longtable,makecell}
+\usepackage{tabularx}
+\usepackage{dcolumn} % for aligning decimal points in tabulars
+\usepackage{booktabs} % for better look and feel of regular tabular
+\usepackage[%
+%	format=plain,
+%	%labelsep=newline,
+%	singlelinecheck=false,
+%	tableposition=top,  %this tells the captionsetup where skip between caption and float is inserted
+%	figureposition=bottom,
+%	skip=1cm,
+	]{caption}  % for \captionsetup; customizable captions for floating environments
+		    %  Loading caption to link to beginning of floats, not the caption.
+%\captionsetup[table]{singlelinecheck=false,skip=1em} %%% But komascript already offers ways to customise the caption.
+%\usepackage{color}
+\usepackage{xspace}
+\usepackage{microtype}
+\usepackage{versions}
+%\usepackage[nomarkers,figuresonly,noheads,nolists]{endfloat}
+\usepackage[official]{eurosym}
+		% use \texteuro for euro sign matching the current font.
+		% use \euro for official euro sign
+%\usepackage{marvosym} %prints official EUR symbol with \EUR
+\usepackage[
+	toc,
+	acronym,
+	%section=subsection, % print the glossary as a subsection
+	section=section,     % print the glossary as a section
+	numberedsection=autolabel,
+	nopostdot=true]{glossaries} % after hyperref
+\makeglossaries
+
+\addto\captionsngerman{%  we use babel; so we can’t just redefine \acronymname. It has to be added to the captionslist for ngerman.
+\renewcommand{\acronymname}{Abkürzungen}
+}
+
+
+
+\pagestyle{scrheadings} 
+\setlength{\headheight}{2cm}
+\setcounter{page}{0} 
+
+% Durch Freischalten der folgenden Zeile wird die Nummerierung der Kapitel deaktiviert:
+% \setcounter{secnumdepth}{-1}
+
+\setkomafont{pagefoot}{\normalfont\scriptsize\sffamily}
+\setkomafont{pagehead}{\rmfamily}
+\setkomafont{subject}{\huge\sffamily}
+
+\input{colordefinitions}
+
+\usepackage[final]{listings}
+\lstset{
+	frame=leftline,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	breaklines=true,
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+	basicstyle=\small\ttfamily,
+	showstringspaces=false,
+  %~ extendedchars=true,
+  %~ inputencoding=utf8,
+  %~ frame=single,
+  %~ framerule=0pt,
+  %~ framesep=7pt,
+  %~ backgroundcolor=\color{greylist},
+  %~ literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}2 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {µ}{\textmu}1
+}
+\renewcommand{\lstlistlistingname}{Code- und Konfigurationsbeispiele} %% Erscheint im Inhaltsverzeichnis
+\renewcommand{\lstlistingname}{Code/Konfiguration} %% Als Titel von Codebeispielen
+\lstloadlanguages{%
+	bash,
+	Awk,
+	HTML,
+	Java,
+	[5.3]Lua,
+	make,
+	go,%
+	Python,
+	PHP,
+	Perl,
+	Ruby,
+	SQL,
+	TeX,
+	XML,
+	}
+
+
+\newenvironment{lcverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{greylist}{%
+    \makebox[\dimexpr\linewidth-0\fboxsep][l]{\BUseVerbatim{cverb}}%
+  }
+  \endflushleft
+}
+
+%% B1-themed Hinweisboxen
+\usepackage[tikz]{bclogo}
+% Definitionen für Hinweisgrafiken
+\renewcommand{\bcdanger}{\includegraphics[width=0.85\logowidth]{images/bc_danger_icon}}
+\renewcommand{\bcattention}{\includegraphics[width=0.85\logowidth]{images/bc_attention_icon}}
+\renewcommand{\bclampe}{\includegraphics[width=0.85\logowidth]{images/bc_lampe_icon}}
+\renewcommand{\bcinfo}{\includegraphics[width=0.85\logowidth]{images/bc_info_icon}}
+
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\beins}{B1 Systems GmbH}
+
+
+% Definitionen für Hinweisboxen
+%\newenvironment{name}[num]{before}{after}
+% \def\boxesgerman{%
+%  \def\warning{Warnung}%
+%  \def\important{Wichtig}%
+%  \def\tip{Tipp}%
+%  \def\note{Hinweis}%
+% }
+% \def\boxesenglish{%
+%  \def\warning{Warning}%
+%  \def\important{Important}%
+%  \def\tip{Tip}%
+%  \def\note{Note}%
+% }
+% \ifthenelse{\equal{\configLang}{english}}{\boxesenglish}{\boxesgerman}
+
+\newenvironment{b1warning}[1]{%
+\begin{bclogo}[logo=\bcdanger,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Achtung}}{\end{bclogo}}
+
+\newenvironment{b1important}[1]{%
+\begin{bclogo}[logo=\bcattention,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Wichtig}}{\end{bclogo}}
+
+\newenvironment{b1tip}[1]{%
+\begin{bclogo}[logo=\bclampe,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Tipp}}{\end{bclogo}}
+
+\newenvironment{b1note}[1]{%
+\begin{bclogo}[logo=\bcinfo,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Hinweis}}{\end{bclogo}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fußzeile                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \cfoot{\scriptsize
+% \hrule
+% \vspace{0.3cm}
+% \begin{footnotesize}\textbf{\textcolor{b1blau}{B}\textcolor{b1orange}{1} Systems GmbH \textemdash\xspace Linux/Open Source Consulting, Training, Managed Service \textcolor{b1orange}{\&} Support}\end{footnotesize}\\
+% \vspace{0.07cm}
+% \begin{footnotesize}Osterfeldstraße 7 / D-85088 Vohburg / +49 (0)8457 - 931096\end{footnotesize}\\
+% \begin{footnotesize}info@\textcolor{b1blau}{b}\textcolor{b1orange}{1}-systems.de / www.\textcolor{b1blau}{b}\textcolor{b1orange}{1}-systems.de \end{footnotesize}\\
+% }
+
+\hypersetup{
+%hidelinks,
+%linkcolor=b1blau %% use this later, after toc
+}
+\cfoot{\scriptsize
+\hrule
+\vspace{0.3cm}
+\begin{footnotesize}\textbf{\textcolor{b1blau}{B}\textcolor{b1orange}{1} Systems GmbH \textemdash\xspace Linux/Open Source Consulting, Training, Managed Service \textcolor{b1orange}{\&} Support}\end{footnotesize}\\
+\vspace{0.07cm}
+\begin{footnotesize}Osterfeldstraße 7 / D-85088 Vohburg / +49 (0)8457 - 931096\end{footnotesize}\\
+\begin{footnotesize}
+\href{mailto:info@b1-systems.de}{info@b1-systems.de} / \href{https://www.b1-systems.de}{www.b1-systems.de} \end{footnotesize}\\
+}
+
+
+
+
+%\setcounter{tocdepth}{2} % How many Depths schould be in the toc?
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LETS GEHT THIS PARTEY STARTET %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kopfzeile auf jeder Seite - BITTE ANPASSEN!                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\ohead{%\@title
+\small
+	Die Erstellung eines Backends für eine Fahrzeugverwaltungssoftware\newline
+\makeatother
+Seite \pagemark}
+\ihead{\includegraphics[height=1.5cm]{b1-systems.eps}}
+
+
+
+\begin{document}
+\include{glossary} % in this file all glossary entries and acronyms are defined
+
+
+\hyphenation{
+Netz-werk-na-mens-raum 
+% pa-r-al-lel
+SIG-HUP
+Open-Source
+Open-Source-Bereich
+%Über-wach-ungs-ge-rä-te %Umlaut   %; muss manuell getrennt werden
+An-wen-dungs-be-reich
+}
+
+% Keine Absatz-Einrückung, Abstand nach Absätzen
+\parindent0pt
+\parskip11pt
+
+\begin{titlepage}
+\titlehead{
+\centering
+\includegraphics[height=5cm]{b1-systems.eps}
+}
+%% FIXME: sobald RGB EPS da ist, bitte eps hinlegen!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bei \title den Titel für die Titelseite eintragen,          % 
+% \author ist der Autor und \subject der Untertitel.          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\title{Die Erstellung eines Backends für eine Fahrzeugverwaltungssoftware bei der \beins{}}
+\author{Moritz Stefan Menzel}
+\publishers{\beins}
+\subject{Prüflingsnummer: xxxxxx}
+\maketitle\thispagestyle{empty}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Diese Tabelle enthält die Versionshistorie.                 % 
+% Aufbau von Tabellen: Jedes Feld wird mit & abgeschlossen,   % 
+% jede Zeile mit  \\                                          %
+% ein \hline sorgt für eine horizontale Trenn-Linie.          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%~ \section*{Versionshistorie}
+%~ \begin{tabularx}{\textwidth}{|l|l|X|l|}
+%~ \hline
+%~ \textsc{\textbf{Version}} & \textsc{\textbf{Datum}} & \textsc{\textbf{Geändert wurde}} & \textsc{\textbf{Von wem}} \\
+%~ \hline
+%~ 00.1 & yyyy-mm-dd & new file 										& Some Dude \\
+%% More entries
+%~ 00.5 & 2018-05-06 & Kapitel Datenbank und Parallel Betrieb			& Some Dude \\
+%~ 00.6 & 2018-05-11 & Umstrukturierung, Entknotung, logischer Aufbau	& Some Dude \\
+%~ 00.7 & 2018-05-14 & Lektorat											& janke, et.al. \\
+%~ \hline
+%~ \end{tabularx}
+
+%~ \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inhaltsverzeichnis                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}  %switch to lowercase roman letters pagenumbers on the toc
+\tableofcontents  % Prints the Table of Contents
+
+\pagebreak
+
+\listoffigures   % Prints a list of images used in the document
+
+\listoftables    % Prints a list of tables used in the document
+
+\lstlistoflistings  % Prints a list of code examples....
+
+\cleardoubleoddpage  % make sure the next page is a right page and insert empty page if necessary
+\pagenumbering{arabic}  % reset page counter and use arabic pagenumberung for main part
+
+\hypersetup{
+%hidelinks,
+linkcolor=b1blau %% use this after toc
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inhalt                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Either start here with your tex(t), or use external
+%% .tex-files relative to kundendoku.tex.
+%% NOTE: don’t use the file extension (.tex) with \input
+
+\input{010-einleitung}
+
+\input{020-projektplanung}
+
+\input{030-projektdurchfuehrung}
+
+\input{050-fazit}
+
+\input{060-anhang}
+
+%%
+%% \input{030-durchfuehrung}
+%% 
+%% \input{031-clientconnect}
+%% \input{033-fluentd}
+%% \input{035-reverseproxy}
+%% \input{037-db}
+%% \input{038-parallel}
+%% 
+%% \input{040-fazit}
+
+\clearpage
+
+\pagenumbering{Roman}  % use Roman upper case letters for glossary
+\printglossaries % Prints your glossary (and by extent the acronyms). More configuration where the glossary package is loaded
+
+%% If you want to insert the Acronyms and Glossary individually,
+%% use these two instead of \printglossaries
+% \setglossarysection{subsection}  % If one should be a subsection
+%\printglossary[type=\acronymtype, style=listgroup]
+%\printglossary[type=\glsdefaulttype, style=listgroup]
+
+
+
+\end{document}

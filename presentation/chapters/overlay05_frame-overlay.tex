@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Die Vorlage mit Overlay Specification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{%
+\begin{frame}[<+->][fragile,t]
+\frametitle<presentation>{Mit Overlay Specification im Frame}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+	Use \texttt{[<+->] in the frame specification} to gradually
+	uncover all items for this frame
+
+\begin{itemize}
+ \item Text
+ \item noch mehr Text
+ \item und noch mehr Text
+\end{itemize}
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+}
+
+\newpage

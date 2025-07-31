@@ -1,0 +1,65 @@
+@startuml
+!theme plain
+start
+:Client Request;
+if (Validate Input) then ([not valid])
+:Return Error 422 Unprocessable Content;
+end
+else ( [valid])
+endif
+switch (Endpoint Type?)
+case ( [GET])
+:Handle GET Request;
+switch (Get Type?)
+case ( [By ID])
+:Query Car by ID;
+case ( [By Plate])
+:Query Cars by Plate;
+case (     [By Brand])
+:Query Cars by Brand;
+case ( [By First Name])
+:Query Cars by First Name;
+case ( [By Last Name])
+:Query Cars by Last Name;
+endswitch
+if (Car(s) Found?) then ([yes])
+:Return Car(s);
+:Return 200 OK;
+else ([no])
+:Return Error 404 Not Found;
+end
+endif
+case (            [POST])
+:Handle POST Request;
+:Create New Car Instance;
+:Add to Database;
+if (Constraints OK?) then ([no])
+:Return Error 400 Bad Request;
+end
+else ( [yes])
+:Return 201 Created;
+endif
+case ( [PUT])
+:Handle PUT Request;
+:Find Existing Car;
+if (Car Exists?) then ([no])
+:Return Error 404 Not Found;
+end
+else ( [yes])
+:Return Updated Car;
+:Return 204 No Content;
+
+endif
+case ( [DELETE])
+:Handle DELETE Request;
+:Find Car to Delete;
+if (Car Exists?) then ([no])
+:Return Error 404 Not Found;
+end
+else ( [yes])
+:Delete Car from DB;
+:Return 204 No Content;
+endif
+endswitch
+stop
+@enduml

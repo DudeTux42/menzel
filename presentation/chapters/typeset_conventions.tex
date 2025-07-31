@@ -1,0 +1,145 @@
+\section{Typographische Konventionen}
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Typographische Konventionen}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+        \begin{center}
+        \huge{Typographische Konventionen}
+        \end{center}
+
+\mode
+<article>
+
+Auf den folgenden Seiten werden kurz die in dieser Schulungsunterlage angewandten typographischen Konventionen vorgestellt.
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Typographische Konventionen}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\small
+\begin{block}{\centering{Typographische Konventionen}}
+\begin{center}
+\begin{tabularx}{\textwidth}{lX}
+\textbf{Element} & \textbf{Auszeichnung}\\
+Datei- und Verzeichnisname & \texttt{/etc/passwd}\\
+Benutzername & \texttt{tux} \\
+URL & \url{http://www.b1-systems.de} \\
+Variable & \texttt{PATH} \\
+Platzhalter/Variable & \texttt{\textit{dateiname}} oder \texttt{<dateiname>} \\
+Kommando & \texttt{ls -l} \\
+Menüpunkt/Eingabefeld/Button & \textit{OK} \\
+Taste bzw. Tastenkombination & \textit{Alt+F1} \\
+Hervorhebung & \emph{Wichtige Information} \\
+\end{tabularx}
+\end{center}
+\end{block}
+\normalsize
+
+
+\mode
+<article>
+
+Die folgende Liste führt die wichtigsten typographischen Elemente auf, die in dieser Schulungsunterlage verwendet werden:
+
+\begin{description}
+\item[\texttt{/etc/passwd}] Datei- und Verzeichnisnamen werden als \texttt{/pfad/zur/datei} gekennzeichnet.
+
+\item[\texttt{tux}] Benutzernamen werden genau so wie Datei- und Verzeichnisnamen hervorgehoben: \texttt{tux}.
+
+\item[\url{http://www.b1-systems.de}] URL.
+
+\item[\texttt{PATH}] Angabe einer Variable mit \texttt{PATH}.
+
+\item[\texttt{\textit{dateiname}} | \texttt{<dateiname>}] Ein Platzhalter ist entweder durch Kursivschrift\newline
+  (\texttt{PATH=\textit{dateiname}}) oder durch den Einschluss in spitze Klammern\newline
+  (\texttt{PATH=<dateiname>}) gekennzeichnet.
+
+\item[\texttt{ls -l}] Kommandos werden wie Datei- und Verzeichnisnamen und Benutzernamen hervorgehoben.
+
+\item[\textit{OK}] Menüpunkt/Eingabefeld/Button.
+
+\item[\textit{Alt+F1}] Tastatureingabe bzw. Tastenkombination.
+
+\item[\emph{Wichtige Information}] Hervorhebung wichtiger Informationen.
+\end{description}
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Shell-Prompt}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+
+Unterschiedliche Prompts für Superuser \texttt{root} und "`gewöhnliche"' Benutzer:
+
+\begin{block}{Aufruf eines Befehls als "`gewöhnlicher"' Benutzer}
+\begin{verbatim}
+$ rpm -qi bash  
+\end{verbatim}
+  
+\end{block}
+
+\begin{block}{Aufruf eines Befehls als \texttt{root}}
+\begin{verbatim}
+# rpm -Uvh bash-<version>.rpm
+\end{verbatim}
+\end{block}
+
+\mode
+<article>
+
+Zur Kennzeichnung, ob ein Kommando von einem "`gewöhnlichen"' Benutzer ausgeführt werden kann, oder ob nur der Superuser \texttt{root} dies darf, werden unterschiedliche Prompts in der Shell verwendet:
+
+\begin{itemize}
+
+\item Aufruf eines Befehls als "`gewöhnlicher"' Benutzer:
+\begin{lstlisting}
+$ rpm -qi bash
+\end{lstlisting}
+Das Zeichen \texttt{\$} ist der Prompt für einen "`gewöhnlichen"' Benutzer.
+
+\item Aufruf eines Befehls als \texttt{root}:
+\begin{lstlisting}
+# rpm -Uvh bash-<version>.rpm
+\end{lstlisting}
+Das Zeichen \texttt{\#} steht für den Prompt von \texttt{root}.
+
+\end{itemize}
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+\cleardoublepage

@@ -1,0 +1,114 @@
+\section{Bilder und Tabellen und Codebeispiele}
+
+
+In diesem Abschnitt werden Bilder und Tabellen eingebunden.
+Auf Seite~\pageref{fig-example-picture} (unten) findet man in Abbildung
+\ref{fig-example-picture} ein Beispiel.
+
+
+Ebenfalls auf Seite~\pageref{tbl-cities} (aber hier oben)
+gibt es eine Tabelle \ref{tbl-cities}.\\
+\verb+\begin{figure}+ sowie \verb+\begin{table}+ erlauben für
+eine automatische Nummerierung und Plazierung auf der Seite.
+Ein Abbildungsverzeichnis wird automatisch erstellt.
+
+\begin{b1important}{Zähler bei Floats}
+\verb+\caption+ muss immer vor dem \verb+\label+
+kommen
+\end{b1important}
+
+
+Und jetzt folgt ein Codebeispiel mit automatischer Nummerierung
+und Auflistung im Index (Inhaltsverzeichnis).
+\begin{lstlisting}[language={bash},
+		caption={[Shell-Skript zur Demonstration]Shell-Skript das „Hallo Welt“ ausgibt},
+		label={lst-helloworld},
+		float={tbh},
+		firstnumber={42},
+		]
+#!/bin/sh
+
+echo "Hallo Welt!"
+
+exit 0
+\end{lstlisting}
+
+
+Und ein generelles Codebeispiel; ohne im Index zu erscheinen:
+
+\begin{Verbatim}[frame=leftline,numbers=left,label=server.conf,labelposition=topline]
+[…]
+client-connect <cmd>
+client-disconnect <cmd>
+[…]
+\end{Verbatim}
+
+
+%Place this floating object at the [b]ottom of the page, if possible
+\begin{figure}[b]
+
+	\centering
+	\includegraphics[%draft,%
+		width=5cm]{example}
+
+	\caption{Ein Beispielbild}
+	\label{fig-example-picture}
+\end{figure}
+
+
+
+
+
+
+% Place this floating object at the [t]op of the page; if possible
+\begin{table}[t]
+	\centering
+
+	\captionabove{Städte, Länder und Flüsse}
+	\label{tbl-cities}
+
+	\begin{tabular}{l|c|r}
+	\toprule
+	Stadt	&	Land			&	Fluss \\
+	\midrule
+	München	&	Bayern			&	Isar \\
+	Hamburg &	Niedersachsen	& Elbe \\
+	Ingolstadt &	Bayern		&	Donau \\
+	\bottomrule
+	\end{tabular}
+
+\end{table}
+
+
+
+
+\begin{table}
+
+	\centering
+	\captionabove{Umfangreichere Tabelle}
+	\label{tbl-extra}
+
+	\begin{tabular}{@{}clc>{\columncolor{green3!30}}c>{\columncolor{green2!50}}c>{\columncolor{blue2!30}}c>{\columncolor{blue4!50}}c}
+	\toprule
+
+		& & & \multicolumn{2}{c}{\cellcolor{green1!80} Foobar}  & \multicolumn{2}{c}{\cellcolor{blue5}Acme}  \\
+		\cmidrule(lr){4-7}
+		\scriptsize Pos. & \scriptsize Kriterium & \scriptsize Gewichtung & \scriptsize Bewertung & \scriptsize Punkte & \scriptsize Bewertung  & \scriptsize Punkte  \\
+		\midrule
+		1 & Pretzel & 4 & 3         & 7          & 2  & 1  \\
+		2 & Plunder & 3 & 5         & 4          & 5  & 6  \\
+		3 & Sandwich & 8 & 1         & 1          & 7  & 3  \\
+		4 & Fryd Butter Pastries & 2 & 9         & 1          & 6  & 2  \\
+		5 & Bananas & 7 & 8         & 3          & 9  & 4  \\
+		\midrule
+		  & \multicolumn{1}{r}{Summe}       &  &  \cellcolor{white}        & 1337          & \cellcolor{white}    & 42  \\ \addlinespace
+		  & \multicolumn{1}{r}{Platzierung} &  &  \cellcolor{white}        & \emph{1}          &  \cellcolor{white}   & \emph{2}  \\
+	%1 & 2 & 3 & \cellcolor{red2} 4 & \cellcolor{blue5} 5 & \cellcolor{green1} 6 & 7 \\
+	\bottomrule
+	\end{tabular}%
+
+\end{table}
+% The @{} command kills the inter-column space and replaces it with whatever is between the curly braces.
+% The >{} command executes the command in curly braces bevor the column element.  <{} is executed after
+% The *{int}{spec} command repeats the columnspecification int times.
+% The values of colors can have a {colorname!int} which indicates a lighter shade of the named color.

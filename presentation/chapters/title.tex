@@ -1,0 +1,89 @@
+\title[Erscheint unten auf Slides]{Erscheint als Titel und auf dem Handout}
+\subtitle{Untertitel (Päsentation der Abschlussarbeit)}
+\date{1. April 2345}
+\mode<presentation>{
+\institute[\href{http://www.b1-systems.de}{B1 Systems GmbH}]{\href{http://www.b1-systems.de}{www.b1-systems.de}}
+% mehrere Autoren
+\author{%
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+\multirow{4}{*} {\includegraphics[height=1.3cm]{common/artwork/b1-systems}}& John Doe \\
+                                & Prüflingsnummer XXX XXXXXXX\\    
+                                & B1 Systems GmbH \\
+                                & \href{mailto:john.doe@b1-systems.de}{john.doe@b1-systems.de} \\
+& \\
+& \\
+% In case this is a collaboration
+%\multirow{4}{*} {\includegraphics[height=1.3cm]{common/artwork/b1-systems}}& John Doe \\
+%                                & Bigwig No.1 \\    
+%                                & Some Top Company \\
+%                                & \href{mailto:john.doe@example.org}{john.doe@example.org} \\
+\end{tabular*}
+}}
+{%
+\setbeamertemplate{footline}[titleplusthanks]
+\begin{frame}
+ \titlepage
+\end{frame}
+}
+
+
+
+
+\mode<article>{
+\author{B1 Systems GmbH}
+% 1 Logo
+    \textblockorigin{9.05cm}{15cm} % as seen from top-left corner
+    \begin{textblock}{3}(0,0)
+        \includegraphics[height=3cm]{common/artwork/b1-systems.eps}
+    \end{textblock}
+
+%% 2 Logos nebeneinander
+
+%     \textblockorigin{5cm}{15cm} % as seen from top-left corner
+%     \begin{textblock}{3}(0,0)
+%         \includegraphics[height=3cm]{common/artwork/b1-systems.eps}
+%     \end{textblock}
+%     \textblockorigin{13cm}{15cm} % as seen from top-left corner
+%     \begin{textblock}{3}(0,0)
+%         \includegraphics[height=3cm]{common/artwork/b1-systems.eps}
+%     \end{textblock}
+
+%% 2 Logos untereinander
+
+% \textblockorigin{9.05cm}{11cm} % as seen from top-left corner
+%     \begin{textblock}{3}(0,0)
+%         \includegraphics[height=3cm]{common/artwork/b1-systems.eps}
+%     \end{textblock}
+% 
+% \textblockorigin{9.05cm}{15cm} % as seen from top-left corner
+%     \begin{textblock}{3}(0,0)
+%         \includegraphics[height=3cm]{common/artwork/b1-systems.eps}
+%     \end{textblock}
+
+%\uppertitleback{
+%Version 2012-01 \\
+%These training materials were written for \slesL 11,\\
+%Service Pack 1 and \rhelL 6.1.}
+%
+%
+%\lowertitleback{
+%
+%If you have any questions, comments or want to report errors in the training material please post them to \href{mailto:doku@b1-systems.de}{doku@b1-systems.de}.
+%
+%\vspace{2cm}
+%
+%\input{common/tex-include/trademarks}
+%
+%\vspace{2cm}
+%
+%\input{common/tex-include/copyright/copyright-title}
+%}
+\maketitle
+}
+
+
+
+\mode
+<all>
+
+\newpage

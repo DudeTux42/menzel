@@ -1,0 +1,91 @@
+%%% \section / \subsection does NOT appear in the presentation
+%%% This is only used for your handout. Set the Headlines with \frametitle{}
+
+\section{Agenda}
+{%
+\setbeamertemplate{frametitle}[chapter title]
+\begin{frame}[fragile]
+
+%%% \frametitle is the thing that appears in the presentation
+\frametitle<presentation>{Agenda TEMPLATE Titel des Projekts}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+
+\mode
+<presentation>
+
+Dieser Text erscheint nur auf der Slide
+
+
+\mode
+<article>
+
+Dieser Text erscheint nur in den Notizen
+
+
+\mode
+<all>
+
+Dieser Text erscheint auf der Slide und in den Notizen
+
+
+
+\end{frame}
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tag 1}
+{%
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Agenda Tag 1}  %% Erscheint nur in den Slides
+%\frametitle{Agenda Tag 1}  %% Erscheint in den Slides und im Handout
+
+
+\mode<article>{
+\includethumb
+
+Notizen für Agenda
+}
+
+\mode
+<presentation>
+
+
+\begin{itemize}
+\item Willkommen 
+\item Einleitung
+  \begin{itemize}
+  \item Punkt 1
+  \item Punkt
+\begin{itemize}
+\item bla
+\end{itemize}
+  \end{itemize}
+
+\item Wichtiges Thema 
+ \begin{itemize}
+ \item Punkt A
+ \item Punkt B
+ \end{itemize}
+
+\end{itemize}
+
+
+\mode
+<all>
+
+
+\end{frame}
+
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

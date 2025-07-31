@@ -1,0 +1,88 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{scrpage2}
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,
+        linkcolor=black,
+        citecolor=black,
+        filecolor=black,
+        pagecolor=black,
+        urlcolor=b1blau,
+        bookmarks=true,
+        bookmarksopen=true,
+        bookmarksopenlevel=3,
+        plainpages=false,
+        pdfpagelabels=true]{hyperref}
+\usepackage{longtable,makecell}
+\usepackage{tabularx}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{versions}
+
+
+\pagestyle{scrheadings} 
+\setlength{\headheight}{2cm}
+\pagestyle{scrheadings}
+\setcounter{page}{1} 
+
+% Durch Freischalten der folgenden Zeile wird die Nummerierung der Kapitel deaktiviert:
+% \setcounter{secnumdepth}{-1}
+
+\setkomafont{pagefoot}{\normalfont\scriptsize\sffamily}
+\setkomafont{pagehead}{\normalfont\scriptsize}
+\setkomafont{subject}{\huge\sffamily}
+
+\definecolor{b1blau}{RGB}{34,71,121}
+\definecolor{b1orange}{RGB}{252,189,43}
+\definecolor{grau}{RGB}{40,40,40}
+\definecolor{greylist}{RGB}{224,224,224}
+
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  extendedchars=true,
+  inputencoding=utf8,
+  frame=single,
+  framerule=0pt,
+  framesep=7pt,
+  backgroundcolor=\color{greylist},
+  literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}2 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {µ}{\textmu}1
+}
+
+\hypersetup{
+hidelinks
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kopfzeile                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ihead{\centering{FIXME TITEL}}
+\ohead{\includegraphics[height=1.5cm]{../common/artwork/b1-systems}}
+
+\begin{document}
+% Fußzeile
+\input{../common/tex-include/footer}
+
+% Keine Absatz-Einrückung, Abstand nach Absätzen
+\parindent0pt
+\parskip10pt
+
+\section*{\textcolor{b1blau}{Titel des Papers}}
+
+Beschreibt kurz, worum es in dem Talk geht:
+\begin{itemize}
+\item Was ist eure Kernaussage?
+\item Wer ist euer Publikum?
+\item Wo holt ihr eure Zuhörer ab (Wissenstand und Problemstellungen)
+\item Wie setzt sich der Talk zusammen? Gibt es Demos oder Workshopanteile?
+\item Was nimmt das Publikum für sich mit aus dem Talk, was kann man danach besser als vorher?
+\end{itemize}
+
+
+\end{document}

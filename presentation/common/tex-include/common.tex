@@ -1,0 +1,18 @@
+
+\newcounter{idx}
+\addtocounter{idx}{2}
+
+\newcommand{\skipthumb}
+{
+\stepcounter{idx}
+}
+
+\newcommand{\includethumb} 
+{
+        \begin{figure}[htb!]
+        \begin{center}
+        \fbox{\includegraphics[width=\textwidth]{pages/\configName\the\value{idx}.pdf}}
+        \stepcounter{idx}
+        \end{center}
+        \end{figure}
+}

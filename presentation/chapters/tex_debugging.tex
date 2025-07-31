@@ -1,0 +1,151 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SVN HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $Date: 2011-06-30 09:42:21 +0200 (Thu, 30 Jun 2011) $
+% $Author: naehring $
+% Author: Jana Jaeger <jaeger@b1-systems.de>
+% $Id: tex_debugging.tex 10196 2011-06-30 07:42:21Z naehring $
+% $HeadURL: https://svn.intern.b1-systems.de/documentation/documentation/schulungsunterlagen/TEMPLATE/de/trunk/chapters/tex_debugging.tex $
+% $Revision: 10196 $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{LaTeX-Debugging}
+
+\begin{frame}[fragile]
+\frametitle<presentation>{LaTeX-Debugging}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+        \begin{center}
+        \huge{LaTeX-Debugging}
+        \end{center}
+
+\mode
+<article>
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hitliste beliebter TeX-Fehler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle<presentation>{Beliebte TeX-Fehler}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+
+\begin{itemize}
+\item Klammer vergessen
+\item Maskierung falsch oder vergessen
+\item Mathmode nicht angewandt
+\item Tippfehler im TeX-Kommando
+\item Fontgröße macht "`unerwünschte"' Sachen
+\item Folieninhalt verrutscht
+\item Kapitelzählung stimmt nicht
+\item Kommentar-Platzierung fehlerhaft
+\end{itemize}
+
+\mode
+<article>
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Wie spüre ich den Fehler auf?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Fehlersuche}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{itemize}
+ \item 
+ \item 
+ \item 
+\end{itemize}
+
+
+\mode
+<article>
+Und hier bitte schön ausführlich alle auf der Folie erwähnten Stichworte erläutern.
+
+\begin{description}
+  \item [Kommentar-Platzierung fehlerhaft] Zwischen Steueranweisungen der Tex-Blöcke dürfen keine Kommentare platziert werden:
+    \small
+    \begin{block}{}
+      \begin{verbatim}
+      \mode
+      %% Dieser Kommentar darf hier nicht platziert sein!
+      <article>
+      \end{verbatim}
+    \end{block}
+    \normalsize
+    Die Anweisung \texttt{<article>} gehört zur vorhergehenden \texttt{mode}-Zeile. Ein dazwischen stehender Kommentar macht die Zuordnung unmöglich und der Build-Prozess bricht mit einem Fehler ab, der lediglich auf einen Fehler in \texttt{@@@beamer} hinweist. Also muss der Kommentar entweder über der \texttt{mode}-Zeile oder nach der \texttt{<article>}-Anweisung eingefügt werden.
+\end{description}
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Die Vorlage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Die Vorlage}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{itemize}
+ \item Text
+ \item noch mehr Text
+ \item und noch mehr Text
+\end{itemize}
+
+
+\mode
+<article>
+Und hier bitte schön ausführlich alle auf der Folie erwähnten Stichworte erläutern.
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+

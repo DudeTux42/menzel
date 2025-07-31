@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SVN HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% $Date: 2011-08-10 09:55:05 +0200 (Wed, 10 Aug 2011) $
+% $Author: boernig $
+% Author: Tux Pinguin <tux@b1-systems.de>
+% $Id: template_chapter.tex 10742 2011-08-10 07:55:05Z boernig $
+% $HeadURL: https://svn.intern.b1-systems.de/documentation/documentation/templates/spielwiese/de/trunk/chapters/template_chapter.tex $
+% $Revision: 10742 $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Templatekapitel - mit flexiblem Folienstart}
+
+{%
+\setbeamertemplate{frametitle}[chapter title]
+\begin{frame}[fragile]
+\frametitle<presentation>{Templatekapitel mit flexiblem Folienstart}
+
+
+\mode<article>{
+\includethumb
+}
+
+
+\mode
+<presentation>
+
+\mode
+<article>
+
+
+\mode
+<all>
+
+\end{frame}
+}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ohne Overlay}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}[fragile]
+\frametitle<presentation>{Ohne Overlay}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{itemize}
+ \item Text
+ \item noch mehr Text
+ \item und noch mehr Text
+\end{itemize}
+
+
+\mode
+<article>
+Und hier bitte schön ausführlich alle auf der Folie erwähnten Stichworte erläutern.
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\texttt{itemize} mit Overlay}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}[fragile]
+\frametitle<presentation>{\texttt{itemize} mit Overlay}
+
+\mode<article>{
+\includethumb
+}
+
+\mode
+<presentation>
+\begin{oitemize}<3>
+ \item Text
+ \item noch mehr Text
+ \item und noch mehr Text
+\end{oitemize}
+
+
+\mode
+<article>
+Und hier bitte schön ausführlich alle auf der Folie erwähnten Stichworte erläutern.
+
+
+
+\mode
+<all>
+
+\end{frame}
+\newpage
+\clearpage

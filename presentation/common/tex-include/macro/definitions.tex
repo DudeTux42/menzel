@@ -1,0 +1,277 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% global definitions 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% overlay-enabled itemize, description and enumerate, conditional use to keep handouts intact
+\newenvironment{oitemize}{\itemize[<+->]}{\enditemize}
+\newenvironment{oenumerate}{\enumerate[<+->]}{\endenumerate}
+\newenvironment{odescription}{\description[<+->]}{\enddescription}
+
+\ifcsname ifhandout\endcsname\else
+  \expandafter\let\csname ifhandout\expandafter\endcsname
+                  \csname iffalse\endcsname
+\fi
+
+\ifhandout
+\renewenvironment{oitemize}{\itemize}{\enditemize}
+\renewenvironment{oenumerate}{\enumerate}{\endenumerate}
+\renewenvironment{odescription}{\description}{\enddescription}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% code environment: b1code 
+% use for code as \b1code{ ... }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fancyvrb}
+\newcommand{\codefontsize} {\fontsize{9}{11}}
+\newcommand{\codefontfamily} {courier}
+\DefineVerbatimEnvironment{b1code}{Verbatim}
+{fontsize=\codefontsize, fontfamily=\codefontfamily, commandchars=\\\{\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% code environment: codeverbatim 
+% (insert commands: true)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fancyvrb}
+\DefineVerbatimEnvironment{codeverbatim}{Verbatim}{commandchars=\\\{\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prompt
+% definitions for standard prompts; the working directory is set as a parameter 
+% e.g.
+% \uprompt{~} -> user@linux:~>
+% the free prompt needs 3 parameters: username, hostname, working directory, e.g.
+% \newpromp{anke}{host}{/tmp} -> anke@host:/tmp> 
+% the name prompt can be used to set a different username and expects 2 parameters
+% \myprompt{anke}{/usr/src/linux} -> anke@linux:/usr/src/linux> 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% User-Prompt
+\newcommand{\uprompt}[1]{user@linux:#1$>$ }
+% Root-Prompt
+\newcommand{\rprompt}[1]{linux:#1 \# }
+% Win-Root-Prompt
+\newcommand{\winrprompt}[1]{C:\textbackslash#1> }
+% Win-Prompt
+\newcommand{\winprompt}[2]{#1:\textbackslash#2> }
+% Free-Prompt
+\newcommand{\newprompt}[3]{#1@#2:#3$>${} }
+% Name-Prompt
+\newcommand{\myprompt}[2]{#1@linux:#2$>$ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abkürzung für korrekte Schreibweise von z. B., d. h. usw.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% z. B.
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+% d. h.
+\newcommand{\dH}{\mbox{d.\,h.}\xspace}
+% u. a.
+\newcommand{\uA}{\mbox{u.\,a.}\xspace}
+% s.o.
+\newcommand{\sO}{\mbox{s.\,o.}\xspace}
+% s.u.
+\newcommand{\sU}{\mbox{s.\,u.}\xspace}
+% u.U.
+\newcommand{\uU}{\mbox{u.\,U.}\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Byte
+% definitions for different byte values; short definition
+% e.g. \kbyte -> KB and long definition e.g. \kbyteL -> Kilobyte
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Byte
+\newcommand{\byte}{Byte}
+% Kilobyte
+\newcommand{\kbyte}{KB}
+% Kilobyte Long
+\newcommand{\kbyteL}{Kilobyte}
+% Megabyte
+\newcommand{\mbyte}{MB}
+% Megabyte Long
+\newcommand{\mbyteL}{Megabyte}
+% Gigabyte
+\newcommand{\gbyte}{GB}
+% Gigabyte Long
+\newcommand{\gbyteL}{Gigabyte}
+% Terrabyte
+\newcommand{\tbyte}{TB}
+% Terrabyte Long
+\newcommand{\tbyteL}{Terrabyte}
+
+%%%% Definitions for distribution names / names /labels %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for some names there is a short name e.g. \sles -> SLES and a long name e.g 
+% \slesL -> SUSE Linux Enterprise Server 
+% if you need the version number, you have to set it in the local definitions and
+% use the macro with "v" e.g. \slesV -> SLES 11 or long \slesLV ->
+% SUSE Linux Enterprise Server 11
+
+% % Version
+% \newcommand{\version}[1]{#1}
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Parameter
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Parameter
+% \newcommand{\parameter}[1]{#1}
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % SUSE Linux Enterprise
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % SUSE Distribution Name
+% \newcommand{\distname}[1][SUSE]{#1}
+% 
+% % Distribution Main Label
+% \newcommand{\distlabel}[1]{\distname{} Linux Enterprise \version{#1}}
+% 
+% % Distribution Long Server Label
+% \newcommand{\distlabelserverlong}[1]{\distlabel Server \version{#1}}
+%% FIXME: please test where we need \xspace and where it doesn't make sense, jaeger
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUSE 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUSE
+\newcommand{\suse}{SUSE\xspace}
+% openSUSE
+\newcommand{\opensuse}{openSUSE\xspace}
+% openSUSE + version
+\newcommand{\suseversion}[1]{#1}
+\newcommand{\opensuseV}[1]{openSUSE \suseversion{#1}\xspace}
+% SLE
+\newcommand{\sle}{SLE\xspace}
+\newcommand{\sleL}{SUSE Linux Enterprise\xspace}
+% SLES
+\newcommand{\sles}{SLES\xspace}
+% SLES + version
+\newcommand{\slesversion}[1]{#1}
+\newcommand{\slesV}[1]{SLES \slesversion{#1}\xspace}
+% SUSE Linux Enterprise Server
+\newcommand{\slesL}{SUSE Linux Enterprise Server\xspace}
+% SUSE Linux Enterprise Server + version
+\newcommand{\slesLV}[1]{SUSE Linux Enterprise Server \slesversion{#1}\xspace}
+% SLED
+\newcommand{\sled}{SLED\xspace}
+% SLED + version
+\newcommand{\sledversion}[1]{#1}
+\newcommand{\sledV}[1]{SLED \sledversion{#1}\xspace}
+% SUSE Linux Enterprise DESKTOP
+\newcommand{\sledL}{SUSE Linux Enterprise Desktop\xspace}
+% SUSE Linux Enterprise Desktop + version
+\newcommand{\sledLV}[1]{SUSE Linux Enterprise Desktop \sledversion{#1}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Red Hat
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Red Hat
+\newcommand{\rh}{Red Hat\xspace}
+% RHEL 
+\newcommand{\rhel}{RHEL\xspace}
+% RHEL + version
+\newcommand{\rhelversion}[1]{#1}
+\newcommand{\rhelV}[1]{RHEL \rhelversion{#1}\xspace}
+% Red Hat Enterprise Linux
+\newcommand{\rhelL}{Red Hat Enterprise Linux\xspace}
+% Red Hat Enterprise Linux + version
+\newcommand{\rhelLV}[1]{Red Hat Enterprise Linux \rhelversion{#1}\xspace}
+% CentOs
+\newcommand{\centos}{CentOS\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Debian
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Debian 
+\newcommand{\debian}{Debian\xspace}
+% Debian + version
+\newcommand{\debversion}[1]{#1}
+\newcommand{\debianV}[1]{Debian \debversion{#1}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ubuntu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ubuntu}{Ubuntu\xspace}
+% Name
+\newcommand{\ubuntuname}[1][Ubuntu]{#1}
+% Label
+\newcommand{\ubuntuversion}[1]{#1}
+\newcommand{\ubuntuV}[1]{\ubuntuname \ubuntuversion{#1}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tool Names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% YaST
+\newcommand{\yast}{YaST\xspace}
+% YaST2
+\newcommand{\yastzw}{YaST2\xspace}
+% system-config (RH)
+\newcommand{\sconfig}{system-config\xspace}
+% OpenStack
+\newcommand{\openstack}{OpenStack\xspace}
+% OpenLDAP
+\newcommand{\openldap}{OpenLDAP\xspace}
+% SUSE Manager
+\newcommand{\suma}{SUSE Manager\xspace}
+%AutoYaST
+\newcommand{\autoyast}{AutoYaST\xspace}
+%SUSE Studio
+\newcommand{\studio}{SUSE Studio Onsite\xspace}
+%ownCloud
+\newcommand{\owncloud}{ownCloud\xspace}
+%VMware
+\newcommand{\vmware}{VMware\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KVM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definitionen fuer Versionsangaben
+
+\def\versionKVM{kvm-88}
+\def\versionQEMU{0.12.3}
+\def\versionlibvirt{0.7.6}
+\def\versionVirtManager{0.8.3}
+
+\def\versionDocument{2010-04}
+
+% FIXME: Definitonen zusammenbauen...
+\def\rpmKVM{kvm-85-5.b1.x86\_64.rpm}
+\def\rpmversionKVM{kvm-85-4.b1}
+\def\rpmKVMkmp{kvm-kmp-default-85\_2.6.27.19\_5-5.b1.x86\_64.rpm}
+\def\rpmversionKVMkmp{kvm-kmp-default-85\_2.6.27.19\_5-4.b1}
+\def\rpmQEMU{}
+\def\rpmlibvirt{}
+
+\def\releasedateKVM{12. Juli 2009}
+\def\releasedateQEMUKVM{26. Februar 2010}
+\def\releasedatelibvirt{03. Februar 2010}
+\def\releasedateVirtManager{09. Februar 2010}
+
+\def\qemuT{QEMU Emulator}
+\def\qemumonitorT{QEMU Monitor}
+\def\qemukvmT{qemu-kvm}
+\def\qemuimgT{qemu-img}
+\def\qcow2T{qcow2}
+\def\kvmT{KVM}
+
+\def\qemuimg{\texttt{\qemuimgT}}
+\def\qemukvm{\texttt{\qemukvmT}}
+\def\qcow2{\texttt{\qcow2T}}
+\def\qemu{\texttt{\qemuT}}
+\def\qemumonitor{\texttt{\qemumonitorT}}
+\def\kvm{\texttt{\kvmT}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELinux
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\selinux}{SELinux\xspace}
+\newcommand{\tenforcement}{Type Enforcement\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AppArmor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\apparmor}{AppArmor\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Open Build Service
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\obs}{Open Build Service\xspace}

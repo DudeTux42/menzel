@@ -1,0 +1,107 @@
+%% preamble for documentation for customers
+
+\documentclass[a4paper,11pt,notitlepage]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{scrlayer-scrpage}
+\input{common/tex-include/fonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[german]{varioref}
+\usepackage[german]{cleveref}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{versions}
+\usepackage{float}
+\usepackage{pdflscape}
+
+\pagestyle{scrheadings} 
+\setlength{\headheight}{2cm}
+% Das schaltet die Kapitelnummerierung aus
+%\setcounter{secnumdepth}{-1}
+
+\setkomafont{pagefoot}{\normalfont\scriptsize\sffamily}
+\setkomafont{subject}{\huge\sffamily}
+
+\input{common/tex-include/colors}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  breakatwhitespace=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+  basicstyle=\small\ttfamily,
+  extendedchars=true,
+  inputencoding=utf8,
+  frame=single,
+  framerule=0pt,
+  framesep=7pt,
+  backgroundcolor=\color{greylist},
+  literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}2 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {µ}{\textmu}1
+}
+
+\usepackage{fancyvrb,newverbs,xcolor}
+\newenvironment{lcverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{greylist}{%
+    \makebox[\dimexpr\linewidth-0\fboxsep][l]{\BUseVerbatim{cverb}}%
+  }
+  \endflushleft
+}
+
+
+%% B1-themed Hinweisboxen
+\usepackage[tikz]{bclogo}
+% Definitionen für Hinweisgrafiken
+\renewcommand{\bcdanger}{\includegraphics[width=0.85\logowidth]{common/artwork/bc_danger_icon}}
+\renewcommand{\bcattention}{\includegraphics[width=0.85\logowidth]{common/artwork/bc_attention_icon}}
+\renewcommand{\bclampe}{\includegraphics[width=0.85\logowidth]{common/artwork/bc_lampe_icon}}
+\renewcommand{\bcinfo}{\includegraphics[width=0.85\logowidth]{common/artwork/bc_info_icon}}
+
+% Definitionen für Hinweisboxen
+%\newenvironment{name}[num]{before}{after}
+% \def\boxesgerman{%
+%  \def\warning{Warnung}%
+%  \def\important{Wichtig}%
+%  \def\tip{Tipp}%
+%  \def\note{Hinweis}%
+% }
+% \def\boxesenglish{%
+%  \def\warning{Warning}%
+%  \def\important{Important}%
+%  \def\tip{Tip}%
+%  \def\note{Note}%
+% }
+% \ifthenelse{\equal{\configLang}{english}}{\boxesenglish}{\boxesgerman}
+
+\newenvironment{b1warning}[1]{%
+\begin{bclogo}[logo=\bcdanger,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Achtung}}{\end{bclogo}}
+
+\newenvironment{b1important}[1]{%
+\begin{bclogo}[logo=\bcattention,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Wichtig}}{\end{bclogo}}
+
+\newenvironment{b1tip}[1]{%
+\begin{bclogo}[logo=\bclampe,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Tipp}}{\end{bclogo}}
+
+\newenvironment{b1note}[1]{%
+\begin{bclogo}[logo=\bcinfo,couleur=blue!10,barre=none,epBord=0.4,ombre=true,couleurOmbre=black!60,blur,arrondi=0.1,sousTitre=#1]{Hinweis}}{\end{bclogo}}
+
+\input{common/tex-include/footer}
+%\cfoot{Tel.:  +49 (0)  84 57 / 93 10 96\\
+%Fax:  +49 (0)  84 57 / 93 10 97\\
+%Web: www.b1-systems.de\\
+%Mail: info@b1-systems.de}
+%\ifoot{B1 Systems GmbH\\
+%Osterfeldstraße 7\\
+%85088 Vohburg\\
+%Amtsgericht Ingolstadt HRB 3537\\
+%Geschäftsführer: Ralph Dehner}
+%\ofoot{Linux / Open Source Consulting, Training,\\
+%Support \& Development}
+
+% \ohead{\seitenkopf, Seite \pagemark}
+% \ihead{\includegraphics[height=1.5cm]{common/artwork/b1-systems}}

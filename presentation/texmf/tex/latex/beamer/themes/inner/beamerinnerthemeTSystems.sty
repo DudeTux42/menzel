@@ -1,0 +1,39 @@
+% Copyright 2013 Jana Jaeger (jaeger@b1-systems.de) based on:
+% Copyright 2012 Pieter Belmans (https://github.com/pbelmans/ugent-beamer)
+%
+% Based on Nico Schlömer's ua-beamer (https://github.com/nschloe/ua-beamer)
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode<presentation>
+
+\newlength\authorwidth
+\setlength\authorwidth{10.2cm}
+
+\defbeamertemplate*{title page}{TSystems theme}
+{
+    \vskip.3ex
+    \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle%
+    \ifx\insertsubtitle\insertdate\@empty%
+    \else%
+      \vskip1ex%
+      \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle%
+      \hfill\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertdate%
+    \fi%
+    \ifx\insertauthor\@empty%
+    \else%
+      \vskip4ex%
+      \begin{beamercolorbox}[right,width=\authorwidth]{author table}%
+      \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor%
+      \end{beamercolorbox}
+    \fi%
+}
+
+\setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{items}[square]
+
+\mode
+<all>

@@ -1,0 +1,51 @@
+%\def\pgfsysdriver{pgfsys-pdftex.def}
+\documentclass[11pt]{beamer}
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  basicstyle=\small\ttfamily,
+  extendedchars=true,
+  inputencoding=utf8,
+  frame=none,
+  literate={Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}2 {ü}{{\"u}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {µ}{\textmu}1
+}
+\usepackage[\configLang]{babel}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{longtable,makecell}
+\usepackage{pgf}
+\usepackage{pgfpages}
+\usepackage[gen]{eurosym}
+\usepackage{xspace}
+% Paket für Profiling
+\RequirePackage{versions}
+
+%\setjobnamebeamerversion{lvm}
+\usetheme{B1CustomNew}
+%\usepackage{beamerthemeshadow}
+
+
+\input{common/tex-include/colors}
+%% ugly workaround for acroread screwing up the colors
+\pdfpageattr {/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\setbeamercolor{structure}{fg=b1blau}
+\setbeamercolor*{palette primary}{bg=b1blau}
+\setbeamercolor*{palette secondary}{bg=b1blau}
+\setbeamercolor*{palette tertiary}{bg=b1blau}
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=b1blau!100!black}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=b1blau!100!white}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=b1blau!100!white}
+\setbeamercolor{palette quaternary}{use=structure,fg=white,bg=b1blau!100!white}
+% 
+\setcounter{section}{0}
+

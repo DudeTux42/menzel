@@ -1,0 +1,120 @@
+% Copyright 2013 Jana Jaeger (jaeger@b1-systems.de) based on:
+% Copyright 2012 Pieter Belmans (https://github.com/pbelmans/ugent-beamer)
+%
+% Based on Nico Schlömer's ua-beamer (https://github.com/nschloe/ua-beamer)
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\RequirePackage{ifthen}
+
+\mode<presentation>
+
+% lengths
+\newlength\margin
+\setlength\margin{0cm}% 0.85cm * 64/127
+
+\newlength\textmargin
+\setlength\textmargin{0.43cm}% 0.85cm * 64/127
+
+\newlength\bannerwidth
+\setlength\bannerwidth{12.8cm}% (10in - 2*0.85cm) * 64/127
+
+\newlength\bannertopmargin
+\setlength\bannertopmargin{0.33cm}%  0.85cm * 64/127
+
+\newlength\footlinerulewidth
+\setlength\footlinerulewidth{12.8cm}
+
+\newlength\footlineclaimwidth
+\setlength\footlineclaimwidth{8.9cm}
+
+\newlength\logowidth
+\setlength\logowidth{.825cm}
+
+% \newlength\footlinerulemargin
+% \setlength\footlinerulemargin{0.55cm}
+
+% images
+\pgfdeclareimage[width=\footlineclaimwidth]{footlineclaim}{footlineclaim}
+
+% shadings
+\pgfdeclarehorizontalshading{shading b1top}{.9cm}%
+{color(0cm)=(b1blau);color(10cm)=(white);color(11.5cm)=(white);color(12.8cm)=(b1orange)}
+\pgfdeclarehorizontalshading{shading b1bottom}{.025cm}%
+{color(0cm)=(b1blau);color(10cm)=(white);color(11.5cm)=(white);color(12.8cm)=(b1orange)}
+
+% headline
+\defbeamertemplate*{headline}{B1CustomNew theme}%
+{%
+\hbox{\pgfuseshading{shading b1top}%
+\hskip-2.475cm\raisebox{.04\height}{\pgfimage[width=\logowidth]{logob1alt}}}
+}
+
+% frametitle
+\defbeamertemplate*{frametitle}{B1CustomNew theme}
+{%
+ % \vskip.2cm
+  \begin{beamercolorbox}[left]{frame title}%
+    \insertframetitle%
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate{frametitle}{thankyou}
+{%
+\vskip2.2cm
+\begin{beamercolorbox}[right]{frame title}%
+ \insertframetitle%
+\end{beamercolorbox}%
+}
+
+\defbeamertemplate{frametitle}{chapter title}
+{%
+\vskip2.2cm
+\begin{beamercolorbox}[right]{frame title}%
+ \insertframetitle%
+\end{beamercolorbox}%
+}
+%% titlepage so definieren, dass sie sich nicht beißt.
+% footline
+\defbeamertemplate*{footline}{B1CustomNew theme}
+{%
+\begin{beamercolorbox}[wd=\paperwidth]{footlinerule}%
+\pgfuseshading{shading b1bottom}\vspace*{4pt} 
+\end{beamercolorbox}
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left,ignorebg]{institute in head/foot}%
+    \hspace*{2ex}\usebeamerfont{institute in head/foot}\usebeamercolor{institute in head/foot}\insertshortinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center,ignorebg]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\usebeamercolor{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right,ignorebg]{frame number in head/foot}%
+    \usebeamerfont{frame number in head/foot}\usebeamercolor{frame number in head/foot}\insertframenumber{}/\inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip2pt%
+}
+
+\defbeamertemplate{footline}{titleplusthanks}
+{%
+\begin{beamercolorbox}[wd=\paperwidth,center]{footlinerule}%
+\pgfuseshading{shading b1bottom}\vspace*{4pt} 
+\pgfuseimage{footlineclaim}
+\end{beamercolorbox}
+\vskip2pt%
+}
+
+% margins
+\setbeamersize{text margin left=2\textmargin,%
+               text margin right=2\textmargin}
+
+% background
+\defbeamertemplate*{background canvas}{B1CustomNew theme}
+{%
+}
+
+\mode
+<all>

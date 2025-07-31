@@ -1,0 +1,145 @@
+% Define glossary entries.
+% Glossary (Glossar) are longer explanations of technical terms. Also plural forms are defined here.
+%
+% use the command \gls{} to print the entry into the text.
+% use \glspl{} to print the plural form (if no plural is defined, just an 's' is added}
+% use \Gls{} to print the singular form; but with a Capital Letter
+% use \Glspl{} to print the plural form; but with a Capital Letter
+% The last two are used for non-nouns appearing at the start of the sentence
+
+\newglossaryentry{open source}  % define the entry
+{
+  name={Open Source}, % Appears in glossary
+  text={Open Source}, % Appears in text
+  plural={Open Source}, % Who would say such a thing?
+  description=
+    {
+        Software ist Software, deren Quellcode öffentlich zugänglich ist, sodass Nutzer ihn einsehen, ändern und verteilen können.
+    }
+}
+
+\newglossaryentry{rest api}  % define the entry
+{
+  name={REST API}, % Appears in glossary
+  text={REST API}, % Appears in text
+  plural={REST API}, % Who would say such a thing?
+  description=
+    {
+        Eine REST-API (Representational State of Resource) ist eine Programmierschnittstelle, die es ermöglicht, Daten zwischen verschiedenen Systemen auszutauschen, indem sie Ressourcen über HTTP-Methoden wie GET, POST, PUT und DELETE anfordert und manipuliert.
+    }
+}
+
+\newglossaryentry{linux}  % define the entry
+{
+  name={Linux}, % Appears in glossary
+  text={Linux}, % Appears in text
+  plural={Linux}, % Who would say such a thing?
+  description=
+    {
+        ist ein freies und offenes Betriebssystem, das auf dem Linux-Kernel basiert und häufig in Servern, Desktops und eingebetteten Systemen verwendet wird.
+    }
+}
+
+\newglossaryentry{vscode}  % define the entry
+{
+  name={Visual Studio Code}, % Appears in glossary
+  text={Visual Studio Code}, % Appears in text
+  plural={Visual Studio Code}, % Who would say such a thing?
+  description=
+    {
+        ist ein leistungsstarker, kostenloser Quelltext-Editor von Microsoft, der eine Vielzahl von Programmiersprachen unterstützt und durch Erweiterungen anpassbar ist.
+    }
+}
+
+\newglossaryentry{python}  % define the entry
+{
+  name={Python}, % Appears in glossary
+  text={Python}, % Appears in text
+  plural={Python}, % Who would say such a thing?
+  description=
+    {
+        ist eine höhere Programmiersprache, die für ihre Einfachheit, Lesbarkeit und Vielseitigkeit bekannt ist und häufig für Webentwicklung, Datenanalyse, künstliche Intelligenz und Automatisierung verwendet wird.
+    }
+}
+
+\newglossaryentry{fastapi}  % define the entry
+{
+  name={FastAPI}, % Appears in glossary
+  text={FastAPI}, % Appears in text
+  plural={FastAPI}, % Who would say such a thing?
+  description=
+    {
+        ist ein modernes, leistungsstarkes und leichtgewichtiges Python-Framework für die Entwicklung von APIs (Application Programming Interfaces) mit einer starken Betonung auf Geschwindigkeit, Sicherheit und Benutzerfreundlichkeit.
+    }
+}
+
+\newglossaryentry{pydantic}  % define the entry
+{
+  name={Pydantic}, % Appears in glossary
+  text={Pydantic}, % Appears in text
+  plural={Pydantic}, % Who would say such a thing?
+  description=
+    {
+        ist eine Python-Bibliothek, die es ermöglicht, Datenmodelle zu definieren und zu validieren, indem sie eine einfache und intuitive Schnittstelle für die Erstellung von robusten, typsicheren und selbst dokumentierenden Datenstrukturen bietet.
+    }
+}
+
+\newglossaryentry{crud}  % define the entry
+{
+  name={CRUD}, % Appears in glossary
+  text={CRUD}, % Appears in text
+  plural={CRUD}, % Who would say such a thing?
+  description=
+    {
+        steht für Create, Read, Update und Delete und beschreibt die grundlegenden Operationen, die auf Daten in einer Datenbank oder einem Datenspeicher durchgeführt werden können.
+    }
+}
+
+\newglossaryentry{fuzzy}  % define the entry
+{
+  name={Fuzzy}, % Appears in glossary
+  text={Fuzzy}, % Appears in text
+  plural={Fuzzy}, % Who would say such a thing?
+  description=
+    {
+      Die Fuzzy-Suche ist eine Suchmethode, die ähnliche, aber nicht exakt übereinstimmende Begriffe findet, indem sie Tippfehler, unterschiedliche Schreibweisen oder ähnliche Wörter berücksichtigt, um die Suchergebnisse zu erweitern und relevanter zu gestalten.
+    }
+}
+
+\newglossaryentry{gitlab}  % define the entry
+{
+  name={GitLab}, % Appears in glossary
+  text={GitLab}, % Appears in text
+  plural={GitLab}, % Who would say such a thing?
+  description=
+    {
+      ist eine webbasierte Plattform zur Versionskontrolle und Zusammenarbeit an Softwareprojekten, die Funktionen wie Repository-Management, Continuous Integration und Projektmanagement in einer einzigen Anwendung vereint.
+    }
+}
+
+% Define acronyms.
+% Acronyms are just short expansions of shortened terms.
+% They are only listed at the end if they occur in the document
+% The first apperance in the text is printed with the long description and the short version in (parentheses)
+%
+% Acronyms (Or Abbreviations) have a "First-Use-Flag" which is handled by LaTeX internally
+% When an entry that is defined with \newacronym is used with a \gls-like command this
+% entry is put into the text with "Long Text (short)" and the First-Use-Flag is unset.
+% All subsequent calls for this entry only insert the short version.
+% To specifically use the short version without changing the Flag, use \glsentryshort{label}
+% To unset the Flag use \glsunset{label}. To reset the Flag use \glsreset{label}.
+
+%\newacronym{name-of-the-entry}{How it appears in the text}{What it means}
+
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{cli}{CLI}{Commandline Interface}
+\newacronym{csv}{CSV}{Comma Seperated Values}
+\newacronym{ui}{UI}{Benutzerschnittstelle (User Interface)}
+\newacronym{url}{URL}{Uniform Resource Locator}
+\newacronym{http}{HTTP}{Hyptertext Transfer Protocol}
+\newacronym{https}{HTTPS}{Hyptertext Transfer Protocol Secure}
+\newacronym{html}{HTML}{Hypertext Markup Language}
+\newacronym{ssl}{SSL}{Secure Socket Layer}
+\newacronym{tcp}{TCP}{Transmission Control Protocoll}
+\newacronym{tls}{TLS}{Transport Layer Security}
+\newacronym{xml}{XML}{erweiterbare Auszeichnungssprache (Extensible Markup Language)}

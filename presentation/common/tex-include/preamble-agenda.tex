@@ -1,0 +1,38 @@
+\documentclass[a4paper,11pt,notitlepage]{scrartcl}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[\configLang]{babel}
+\usepackage{fontenc}
+\input{common/tex-include/fonts}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{afterpage}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{multicol}
+%\newcommand{\bsection}[1]{\fancyhead[R]{\includegraphics[height=1.5cm]{common/artwork/b1-systems.png}}\section[#1]{\color{b1blau}#1}\afterpage{\fancyhead{}}}
+%\newcommand{\bsection}[1]{\fancyhead[R]{\includegraphics[height=1.5cm]{common/artwork/nov_red.png}}\section[#1]{#1}\afterpage{\fancyhead{}}}
+%\usepackage{fancyhdr}
+\usepackage{scrlayer-scrpage}
+\usepackage{hyperref}
+%\newcommand{\bsection}[1]{\fancyhead[R]{\includegraphics[height=1.5cm]{common/artwork/b1-systems.png}}\section[#1]{\color{b1blau}#1}\afterpage{\fancyhead{}}}
+%\newcommand{\nsection}[1]{\fancyhead[R]{\includegraphics[height=1.5cm]{common/artwork/nov_red.png}}\section[#1]{#1}\afterpage{\fancyhead{}}}
+\newcommand{\bsection}[1]{\ohead{\includegraphics[height=1.5cm]{common/artwork/b1-systems}}\section[#1]{\color{b1blau}#1}}
+\newcommand{\nsection}[1]{\ohead{\includegraphics[height=1.5cm]{common/artwork/nov_red.png}}\section[#1]{#1}}
+\newcommand{\hsection}[1]{\ohead{\includegraphics[height=1.5cm]{common/artwork/Hewlett-Packard-Logo}}\section[#1]{\color{b1blau}#1}}
+%% not in use, but we might feel like using them one day
+% \newcommand{\bsubsection}[1]{\subsection*{\color{b1blau}#1}}
+% \newcommand{\bsubsubsection}[1]{\subsubsection*{\color{b1blau}#1}}
+\setkomafont{pagefoot}{%
+  \normalfont\sffamily
+}
+
+\input{common/tex-include/colors}
+
+%\usepackage{fancyhdr}
+\setlength{\headheight}{2cm}
+\pagestyle{scrheadings}
+\setcounter{secnumdepth}{-1}
+
+%Profiling
+\RequirePackage{versions}

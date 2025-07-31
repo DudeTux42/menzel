@@ -1,0 +1,59 @@
+\section{Projektplanung}
+
+\subsection{Ist-Zustand} \label{Ist-Zustand}
+
+Die Fahrzeugdaten werden derzeit handschriftlich in einem Ordner archiviert, was zu mehreren Problemen führt:
+
+\begin{itemize}
+    \item Die Daten sind nicht digital erfasst, was eine einfache Durchsuchung und Auswertung unmöglich macht.
+    \item Der Zugriff auf die Fahrzeugdaten ist ausschließlich vor Ort möglich, was die Flexibilität erheblich einschränkt.
+    \item Die Lesbarkeit der Handschrift ist oft unzureichend, was zu Missverständnissen führt.
+    \item Die manuelle Pflege der Daten erfordert viel Zeit und ist anfällig für Fehler.
+    \item Die Daten sind nicht ausreichend geschützt, was zu Beschädigungen oder dem Verlust der Dokumente führt.
+\end{itemize}
+
+Im Rahmen der Wirtschaftlichkeitsrechnung analysiere ich die Kosten des bisherigen Verfahrens gründlich. Die identifizierten Probleme bei der handschriftlichen Archivierung der Fahrzeugdaten verdeutlichen die Notwendigkeit, effizientere und digitalisierte Prozesse zu implementieren, um Zeit und Ressourcen zu sparen.
+
+\subsection{Soll-Konzept} \label{Soll-Konzept}
+
+In Abstimmung mit dem Auftraggeber werden folgende funktionale und nichtfunktionale Anforderungen erarbeitet:
+
+Die Fahrzeugdaten werden über eine \gls{api} in einer Datenbank gespeichert, wobei die \gls{crud}-Methoden verwendet werden. Dies geschieht auf Grundlage eines vordefinierten Datenmodells.
+
+Das Datenmodell legt fest, dass das Kennzeichen einzigartig ist. Zusätzlich erfasst es die Automarke sowie den Vornamen und Nachnamen des Mitarbeiters.
+
+Die \gls{api} ermöglicht es, Fahrzeuge durch eine \gls{fuzzy}-Suche anhand des Kennzeichens, der Automarke, des Vornamens oder des Nachnamens zu finden. Darüber hinaus bietet sie Funktionen zum Bearbeiten, Löschen und Hinzufügen neuer Fahrzeuge.
+
+Das Ergebnis ist in Form eines Aktivitätsdiagramms auf Seite~\pageref{Aktivitätsdiagramm} im Anhang~\ref{Aktivitätsdiagramm} zu finden.
+
+\subsection{Zeitplanung}
+
+Für dieses Projekt wählen wir die hybride Agile-Wasserfall-Softwareentwicklungsmethode, da einerseits die meisten Anforderungen zu Beginn bekannt sind und wir andererseits auf mögliche Änderungen seitens des Auftraggebers flexibel reagieren können. Zudem ermöglicht uns dies, in bestimmten Phasen zu iterieren. Durch diese Vorgehensweise können wir in ständigem Austausch mit dem Auftraggeber bleiben und wiederholt Feedback vom Projektbetreuer einholen, um in diesem Zeitraum die bestmögliche Lösung zu erarbeiten.
+
+Die gewählte Methode zur Softwareentwicklung führt dazu, dass die Änderungen und der zeitliche Rahmen nicht chronologisch aufgelistet sind, wie in Tabelle~\ref{projekt-zeit} auf Seite~\pageref{projekt-zeit} dargestellt.
+
+Im Projektantrag hat der Autor versehentlich 8 Stunden für die Erstellung des Soll-Konzepts angegeben. Diese Angabe wurde in der Zeittabelle korrigiert. Die tatsächliche Erstellung des Soll-Konzepts erforderte mehr Zeit, da eine sorgfältige Planung unerlässlich war. Auch die Implementierung des Backends nahm mehr Aufwand in Anspruch, da eine umfassende Einarbeitung in die verwendeten Frameworks notwendig war, um eine erfolgreiche Umsetzung zu gewährleisten. Darüber hinaus wurde weniger Zeit für Tests benötigt, da das hervorragend umgesetzte UML-Diagramm in der Erstellung des Soll-Konzepts erheblich zur Effizienz der Tests beigetragen hat.
+
+\begin{table}[!h]
+    \centering
+    \caption{Erfasste Zeiten und Änderungen zum Projektantrag}
+    \label{projekt-zeit}
+    \begin{tabular}{lc<{\cellcolor{b1orange!50}}c<{\cellcolor{b1orange!70}}c}
+    \toprule
+        \cellcolor{white} & \multicolumn{2}{c}{\cellcolor{b1blau}\textcolor{white}{Zeit}} & \cellcolor{white} \\
+        \cmidrule(lr){2-3}
+        \scriptsize Tätigkeit & \scriptsize Geplant & \scriptsize Tatsächlich & \scriptsize Veränderung \\
+        \midrule
+        Ist-Analyse                           & 6 h  & 5 h                        & \cellcolor{green2!70}{$-$ 1 h} \\
+        Erstellung Soll-Konzept               & 8 h  & 11 h                       & \cellcolor{red2!60}{$+$ 3 h} \\
+        Wirtschaftlichkeitsrechnung           & 4 h  & 2 h                        & \cellcolor{green2!70}{$-$ 2 h} \\
+        Implementierung Backend               & 29 h & 30 h                       & \cellcolor{red2!60}{$+$ 1 h} \\
+        Testing und Debugging                 & 15 h & 13 h                       & \cellcolor{green2!70}{$-$ 2 h} \\
+        Projektdokumentation                  & 18 h & 19 h                       & \cellcolor{red2!60}{$+$ 1 h} \\
+        \midrule
+            \bfseries{Gesamt}                 & \multicolumn{2}{c}{\cellcolor{b1blau}\textcolor{white}{80 h}} & \cellcolor{white}\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Wirtschaftlichkeit}
